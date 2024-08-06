@@ -1,0 +1,5 @@
+[submodule "inet4.4"]
+	path = inet4.4
+	url = ../inet4.4.git
+	branch = master
+
