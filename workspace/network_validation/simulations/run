@@ -1,0 +1,4 @@
+#!/bin/sh
+cd `dirname $0`
+../src/validation_paper -n .:../src $*
+# for shared lib, use: opp_run -l ../src/validation_paper -n .:../src $*

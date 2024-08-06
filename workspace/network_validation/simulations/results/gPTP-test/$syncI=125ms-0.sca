@@ -1,0 +1,2502 @@
+version 3
+run gPTP-test-0-20240217-18:07:29-135372
+attr configname gPTP-test
+attr datetime 20240217-18:07:29
+attr datetimef 20240217-180729
+attr experiment gPTP-test
+attr inifile omnetpp.ini
+attr iterationvars $syncI=125ms
+attr iterationvarsd syncI=125ms
+attr iterationvarsf syncI=125ms-
+attr measurement $syncI=125ms
+attr network gptp_withclock
+attr processid 135372
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+itervar syncI 125ms
+config image-path ../../../inet4.4/images
+config description gPTP
+config sim-time-limit 500s
+config network gptp_withclock
+config **.timeChanged*.vector-recording true
+config **.timeDifference*.vector-recording true
+config **.scalar-recording false
+config **.vector-recording false
+config output-vector-file results/gPTP-test/$syncI=125ms-0.vec
+config output-scalar-file results/gPTP-test/$syncI=125ms-0.sca
+config *.switch.hasGptp true
+config *.tsnClock.hasGptp true
+config *.tsnClock.clock.typename IdealClock
+config *.tsnClock.clock.oscillator.typename IdealOscillator
+config **.referenceClock "\"tsnClock.clock\""
+config *.tsnClock.gptp.gptpNodeType "\"MASTER_NODE\""
+config *.tsnClock.gptp.masterPorts "[\"eth0\"]"
+config *.switch.gptp.gptpNodeType "\"SLAVE_NODE\""
+config *.switch.gptp.slavePort "\"eth2\""
+config *.switch.gptp.pDelayInterval 1s
+config *.switch.gptp.pDelayInitialOffset 0ms
+config *.switch.gptp.clockResetThreshold 10ns
+config *.switch.gptp.delta 0.7
+config *.switch.gptp.gamma 1.0
+config *.tsnClock.gptp.syncInterval 125ms
+config *.switch.clock.typename SettableClock
+config *.switch.clock.oscillator.typename RandomDriftOscillator
+config *.switch.clock.oscillator.initialDriftRate 0ppm
+config *.switch.clock.oscillator.changeInterval 5ms
+config *.switch.clock.oscillator.driftRateChange uniform(-0.05ppm,0.05ppm)
+config *.switch.clock.oscillator.driftRateChangeLowerLimit -0.1ppm
+config *.switch.clock.oscillator.driftRateChangeUpperLimit 0.1ppm
+config *.visualizer.typename IntegratedMultiCanvasVisualizer
+config *.visualizer.infoVisualizer.displayInfos true
+config *.visualizer.dataLinkVisualizer[0].displayLinks true
+config *.visualizer.dataLinkVisualizer[0].activityLevel "\"protocol\""
+config *.visualizer.dataLinkVisualizer[0].packetFilter "\"GptpSync\""
+config *.visualizer.dataLinkVisualizer[0].lineColor "\"blue2\""
+config *.visualizer.numInfoVisualizers 2
+config *.visualizer.infoVisualizer[0].modules "\"*.tsnClock.clock\""
+config *.tsnClock.clock.displayStringTextFormat "\"time: %T\""
+config *.visualizer.infoVisualizer[1].modules "\"*.switch.clock\""
+config *.visualizer.infoVisualizer[1].placementHint "\"bottom\""
+config *.switch.clock.displayStringTextFormat "\"diff: %d\""
+config parallel-simulation false
+config parsim-num-partitions 4
+config simtime-resolution ps
+
+par gptp_withclock.tactile.ethg$o[0].channel typename "\"inet.node.ethernet.EthernetLink\""
+par gptp_withclock.tactile.ethg$o[0].channel disabled false
+attr mutable ""
+par gptp_withclock.tactile.ethg$o[0].channel delay 2.5e-09s
+attr mutable ""
+attr unit s
+par gptp_withclock.tactile.ethg$o[0].channel datarate 0bps
+attr mutable ""
+attr unit bps
+par gptp_withclock.tactile.ethg$o[0].channel ber 0
+attr mutable ""
+par gptp_withclock.tactile.ethg$o[0].channel per 0
+attr mutable ""
+par gptp_withclock.tactile.ethg$o[0].channel length 0.5m
+attr unit m
+par gptp_withclock.switch.ethg$o[0].channel typename "\"inet.node.ethernet.EthernetLink\""
+par gptp_withclock.switch.ethg$o[0].channel disabled false
+attr mutable ""
+par gptp_withclock.switch.ethg$o[0].channel delay 2.5e-09s
+attr mutable ""
+attr unit s
+par gptp_withclock.switch.ethg$o[0].channel datarate 0bps
+attr mutable ""
+attr unit bps
+par gptp_withclock.switch.ethg$o[0].channel ber 0
+attr mutable ""
+par gptp_withclock.switch.ethg$o[0].channel per 0
+attr mutable ""
+par gptp_withclock.switch.ethg$o[0].channel length 0.5m
+attr unit m
+par gptp_withclock.switch.ethg$o[1].channel typename "\"inet.node.ethernet.EthernetLink\""
+par gptp_withclock.switch.ethg$o[1].channel disabled false
+attr mutable ""
+par gptp_withclock.switch.ethg$o[1].channel delay 2.5e-09s
+attr mutable ""
+attr unit s
+par gptp_withclock.switch.ethg$o[1].channel datarate 0bps
+attr mutable ""
+attr unit bps
+par gptp_withclock.switch.ethg$o[1].channel ber 0
+attr mutable ""
+par gptp_withclock.switch.ethg$o[1].channel per 0
+attr mutable ""
+par gptp_withclock.switch.ethg$o[1].channel length 0.5m
+attr unit m
+par gptp_withclock.server.ethg$o[0].channel typename "\"inet.node.ethernet.EthernetLink\""
+par gptp_withclock.server.ethg$o[0].channel disabled false
+attr mutable ""
+par gptp_withclock.server.ethg$o[0].channel delay 2.5e-09s
+attr mutable ""
+attr unit s
+par gptp_withclock.server.ethg$o[0].channel datarate 0bps
+attr mutable ""
+attr unit bps
+par gptp_withclock.server.ethg$o[0].channel ber 0
+attr mutable ""
+par gptp_withclock.server.ethg$o[0].channel per 0
+attr mutable ""
+par gptp_withclock.server.ethg$o[0].channel length 0.5m
+attr unit m
+par gptp_withclock.tsnClock.ethg$o[0].channel typename "\"inet.node.ethernet.EthernetLink\""
+par gptp_withclock.tsnClock.ethg$o[0].channel disabled false
+attr mutable ""
+par gptp_withclock.tsnClock.ethg$o[0].channel delay 2.5e-09s
+attr mutable ""
+attr unit s
+par gptp_withclock.tsnClock.ethg$o[0].channel datarate 0bps
+attr mutable ""
+attr unit bps
+par gptp_withclock.tsnClock.ethg$o[0].channel ber 0
+attr mutable ""
+par gptp_withclock.tsnClock.ethg$o[0].channel per 0
+attr mutable ""
+par gptp_withclock.tsnClock.ethg$o[0].channel length 0.5m
+attr unit m
+par gptp_withclock.switch.ethg$o[2].channel typename "\"inet.node.ethernet.EthernetLink\""
+par gptp_withclock.switch.ethg$o[2].channel disabled false
+attr mutable ""
+par gptp_withclock.switch.ethg$o[2].channel delay 2.5e-09s
+attr mutable ""
+attr unit s
+par gptp_withclock.switch.ethg$o[2].channel datarate 0bps
+attr mutable ""
+attr unit bps
+par gptp_withclock.switch.ethg$o[2].channel ber 0
+attr mutable ""
+par gptp_withclock.switch.ethg$o[2].channel per 0
+attr mutable ""
+par gptp_withclock.switch.ethg$o[2].channel length 0.5m
+attr unit m
+par gptp_withclock.visualizer.sceneVisualizer[0] typename "\"inet.visualizer.canvas.scene.SceneCanvasVisualizer\""
+par gptp_withclock.visualizer.sceneVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.sceneVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.sceneVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.sceneVisualizer[0] physicalEnvironmentModule "\"physicalEnvironment\""
+par gptp_withclock.visualizer.sceneVisualizer[0] networkNodeVisualizerModule "\"gptp_withclock.visualizer.networkNodeVisualizer[0]\""
+par gptp_withclock.visualizer.sceneVisualizer[0] axisLength "nan m"
+attr mutable ""
+attr unit m
+par gptp_withclock.visualizer.sceneVisualizer[0] animationSpeed 0
+par gptp_withclock.visualizer.sceneVisualizer[0] sceneMinX "nan m"
+attr unit m
+par gptp_withclock.visualizer.sceneVisualizer[0] sceneMinY "nan m"
+attr unit m
+par gptp_withclock.visualizer.sceneVisualizer[0] sceneMinZ "nan m"
+attr unit m
+par gptp_withclock.visualizer.sceneVisualizer[0] sceneMaxX "nan m"
+attr unit m
+par gptp_withclock.visualizer.sceneVisualizer[0] sceneMaxY "nan m"
+attr unit m
+par gptp_withclock.visualizer.sceneVisualizer[0] sceneMaxZ "nan m"
+attr unit m
+par gptp_withclock.visualizer.sceneVisualizer[0] zIndex 0
+par gptp_withclock.visualizer.sceneVisualizer[0] viewAngle "\"x right y down z out\""
+attr mutable ""
+par gptp_withclock.visualizer.sceneVisualizer[0] viewScale "\"1 1\""
+attr mutable ""
+par gptp_withclock.visualizer.sceneVisualizer[0] viewTranslation "\"0 0\""
+attr mutable ""
+par gptp_withclock.visualizer.sceneVisualizer[0] descriptionFigure "\"\""
+par gptp_withclock.visualizer.physicalEnvironmentVisualizer[0] typename "\"inet.visualizer.canvas.environment.PhysicalEnvironmentCanvasVisualizer\""
+par gptp_withclock.visualizer.physicalEnvironmentVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.physicalEnvironmentVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.physicalEnvironmentVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.physicalEnvironmentVisualizer[0] physicalEnvironmentModule "\"physicalEnvironment\""
+par gptp_withclock.visualizer.physicalEnvironmentVisualizer[0] displayObjects true
+par gptp_withclock.visualizer.physicalEnvironmentVisualizer[0] zIndex 0
+par gptp_withclock.visualizer.networkNodeVisualizer[0] typename "\"inet.visualizer.canvas.scene.NetworkNodeCanvasVisualizer\""
+par gptp_withclock.visualizer.networkNodeVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.networkNodeVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.networkNodeVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.networkNodeVisualizer[0] nodeFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.networkNodeVisualizer[0] annotationSpacing 4
+par gptp_withclock.visualizer.networkNodeVisualizer[0] placementPenalty 10
+par gptp_withclock.visualizer.networkNodeVisualizer[0] zIndex 0
+par gptp_withclock.visualizer.networkConnectionVisualizer[0] typename "\"inet.visualizer.canvas.scene.NetworkConnectionCanvasVisualizer\""
+par gptp_withclock.visualizer.networkConnectionVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.networkConnectionVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.networkConnectionVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.networkConnectionVisualizer[0] displayNetworkConnections true
+par gptp_withclock.visualizer.networkConnectionVisualizer[0] nodeFilter "\"\""
+attr mutable ""
+par gptp_withclock.visualizer.networkConnectionVisualizer[0] lineColor "\"black\""
+par gptp_withclock.visualizer.networkConnectionVisualizer[0] lineStyle "\"solid\""
+par gptp_withclock.visualizer.networkConnectionVisualizer[0] lineWidth 1
+par gptp_withclock.visualizer.networkConnectionVisualizer[0] zIndex 0
+par gptp_withclock.visualizer.mobilityVisualizer[0] typename "\"inet.visualizer.canvas.mobility.MobilityCanvasVisualizer\""
+par gptp_withclock.visualizer.mobilityVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.mobilityVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.mobilityVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.mobilityVisualizer[0] networkNodeVisualizerModule "\"gptp_withclock.visualizer.networkNodeVisualizer[0]\""
+par gptp_withclock.visualizer.mobilityVisualizer[0] displayMobility true
+par gptp_withclock.visualizer.mobilityVisualizer[0] animationSpeed 0
+par gptp_withclock.visualizer.mobilityVisualizer[0] moduleFilter "\"**.mobility\""
+attr mutable ""
+par gptp_withclock.visualizer.mobilityVisualizer[0] displayPositions false
+par gptp_withclock.visualizer.mobilityVisualizer[0] positionCircleRadius 4
+par gptp_withclock.visualizer.mobilityVisualizer[0] positionCircleLineWidth 1
+par gptp_withclock.visualizer.mobilityVisualizer[0] positionCircleLineColor "\"dark\""
+attr enum light,dark
+par gptp_withclock.visualizer.mobilityVisualizer[0] positionCircleFillColor "\"dark\""
+attr enum light,dark
+par gptp_withclock.visualizer.mobilityVisualizer[0] displayOrientations false
+par gptp_withclock.visualizer.mobilityVisualizer[0] orientationPieRadius 32
+par gptp_withclock.visualizer.mobilityVisualizer[0] orientationPieSize 0.2
+par gptp_withclock.visualizer.mobilityVisualizer[0] orientationPieOpacity 0.25
+par gptp_withclock.visualizer.mobilityVisualizer[0] orientationLineColor "\"black\""
+par gptp_withclock.visualizer.mobilityVisualizer[0] orientationLineStyle "\"solid\""
+par gptp_withclock.visualizer.mobilityVisualizer[0] orientationLineWidth 1
+par gptp_withclock.visualizer.mobilityVisualizer[0] orientationFillColor "\"blue\""
+par gptp_withclock.visualizer.mobilityVisualizer[0] displayVelocities false
+par gptp_withclock.visualizer.mobilityVisualizer[0] velocityArrowScale 1
+par gptp_withclock.visualizer.mobilityVisualizer[0] velocityLineColor "\"black\""
+par gptp_withclock.visualizer.mobilityVisualizer[0] velocityLineStyle "\"solid\""
+par gptp_withclock.visualizer.mobilityVisualizer[0] velocityLineWidth 1
+par gptp_withclock.visualizer.mobilityVisualizer[0] displayMovementTrails false
+par gptp_withclock.visualizer.mobilityVisualizer[0] movementTrailLineColor "\"dark\""
+attr enum light,dark
+par gptp_withclock.visualizer.mobilityVisualizer[0] movementTrailLineStyle "\"solid\""
+par gptp_withclock.visualizer.mobilityVisualizer[0] movementTrailLineWidth 1
+par gptp_withclock.visualizer.mobilityVisualizer[0] trailLength 100
+par gptp_withclock.visualizer.mobilityVisualizer[0] zIndex 0
+par gptp_withclock.visualizer.statisticVisualizer[0] typename "\"inet.visualizer.canvas.common.StatisticCanvasVisualizer\""
+par gptp_withclock.visualizer.statisticVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.statisticVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.statisticVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.statisticVisualizer[0] networkNodeVisualizerModule "\"gptp_withclock.visualizer.networkNodeVisualizer[0]\""
+par gptp_withclock.visualizer.statisticVisualizer[0] displayStatistics true
+par gptp_withclock.visualizer.statisticVisualizer[0] signalName "\"\""
+par gptp_withclock.visualizer.statisticVisualizer[0] statisticName "\"\""
+par gptp_withclock.visualizer.statisticVisualizer[0] statisticUnit "\"\""
+par gptp_withclock.visualizer.statisticVisualizer[0] statisticExpression "\"\""
+par gptp_withclock.visualizer.statisticVisualizer[0] sourceFilter "\"**\""
+attr mutable ""
+par gptp_withclock.visualizer.statisticVisualizer[0] format "\"%n: %v %u\""
+attr mutable ""
+par gptp_withclock.visualizer.statisticVisualizer[0] unit "\"\""
+par gptp_withclock.visualizer.statisticVisualizer[0] font "\"<default>\""
+par gptp_withclock.visualizer.statisticVisualizer[0] textColor "\"black\""
+par gptp_withclock.visualizer.statisticVisualizer[0] backgroundColor "\"white\""
+par gptp_withclock.visualizer.statisticVisualizer[0] opacity 1
+par gptp_withclock.visualizer.statisticVisualizer[0] placementHint "\"top\""
+par gptp_withclock.visualizer.statisticVisualizer[0] placementPriority 0
+par gptp_withclock.visualizer.statisticVisualizer[0] zIndex 10
+par gptp_withclock.visualizer.statisticVisualizer[0] propertyName "\"\""
+par gptp_withclock.visualizer.statisticVisualizer[0] propertyIndex "\"\""
+par gptp_withclock.visualizer.infoVisualizer[0] typename "\"inet.visualizer.canvas.common.InfoCanvasVisualizer\""
+par gptp_withclock.visualizer.infoVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.infoVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.infoVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.infoVisualizer[0] networkNodeVisualizerModule "\"gptp_withclock.visualizer.networkNodeVisualizer[0]\""
+par gptp_withclock.visualizer.infoVisualizer[0] displayInfos true
+par gptp_withclock.visualizer.infoVisualizer[0] modules "\"*.tsnClock.clock\""
+attr mutable ""
+par gptp_withclock.visualizer.infoVisualizer[0] format "\"%t\""
+attr mutable ""
+par gptp_withclock.visualizer.infoVisualizer[0] font "\"<default>\""
+par gptp_withclock.visualizer.infoVisualizer[0] textColor "\"black\""
+par gptp_withclock.visualizer.infoVisualizer[0] backgroundColor "\"white\""
+par gptp_withclock.visualizer.infoVisualizer[0] opacity 1
+par gptp_withclock.visualizer.infoVisualizer[0] placementHint "\"top\""
+par gptp_withclock.visualizer.infoVisualizer[0] placementPriority 0
+par gptp_withclock.visualizer.infoVisualizer[0] zIndex 10
+par gptp_withclock.visualizer.infoVisualizer[1] typename "\"inet.visualizer.canvas.common.InfoCanvasVisualizer\""
+par gptp_withclock.visualizer.infoVisualizer[1] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.infoVisualizer[1] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.infoVisualizer[1] tags "\"\""
+par gptp_withclock.visualizer.infoVisualizer[1] networkNodeVisualizerModule "\"gptp_withclock.visualizer.networkNodeVisualizer[0]\""
+par gptp_withclock.visualizer.infoVisualizer[1] displayInfos true
+par gptp_withclock.visualizer.infoVisualizer[1] modules "\"*.switch.clock\""
+attr mutable ""
+par gptp_withclock.visualizer.infoVisualizer[1] format "\"%t\""
+attr mutable ""
+par gptp_withclock.visualizer.infoVisualizer[1] font "\"<default>\""
+par gptp_withclock.visualizer.infoVisualizer[1] textColor "\"black\""
+par gptp_withclock.visualizer.infoVisualizer[1] backgroundColor "\"white\""
+par gptp_withclock.visualizer.infoVisualizer[1] opacity 1
+par gptp_withclock.visualizer.infoVisualizer[1] placementHint "\"bottom\""
+par gptp_withclock.visualizer.infoVisualizer[1] placementPriority 0
+par gptp_withclock.visualizer.infoVisualizer[1] zIndex 10
+par gptp_withclock.visualizer.energyStorageVisualizer[0] typename "\"inet.visualizer.canvas.power.EnergyStorageCanvasVisualizer\""
+par gptp_withclock.visualizer.energyStorageVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.energyStorageVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.energyStorageVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.energyStorageVisualizer[0] networkNodeVisualizerModule "\"gptp_withclock.visualizer.networkNodeVisualizer[0]\""
+par gptp_withclock.visualizer.energyStorageVisualizer[0] displayEnergyStorages false
+par gptp_withclock.visualizer.energyStorageVisualizer[0] energyStorageFilter "\"**\""
+par gptp_withclock.visualizer.energyStorageVisualizer[0] color "\"green\""
+par gptp_withclock.visualizer.energyStorageVisualizer[0] width 8
+par gptp_withclock.visualizer.energyStorageVisualizer[0] height 24
+par gptp_withclock.visualizer.energyStorageVisualizer[0] spacing 2
+par gptp_withclock.visualizer.energyStorageVisualizer[0] placementHint "\"right\""
+par gptp_withclock.visualizer.energyStorageVisualizer[0] placementPriority 0
+par gptp_withclock.visualizer.energyStorageVisualizer[0] zIndex 10
+par gptp_withclock.visualizer.mediumVisualizer[0] typename "\"inet.visualizer.canvas.physicallayer.MediumCanvasVisualizer\""
+par gptp_withclock.visualizer.mediumVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.mediumVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.mediumVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.mediumVisualizer[0] mediumModule "\"radioMedium\""
+par gptp_withclock.visualizer.mediumVisualizer[0] networkNodeVisualizerModule "\"gptp_withclock.visualizer.networkNodeVisualizer[0]\""
+par gptp_withclock.visualizer.mediumVisualizer[0] nodeFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.mediumVisualizer[0] interfaceFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.mediumVisualizer[0] packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par gptp_withclock.visualizer.mediumVisualizer[0] displaySignals false
+par gptp_withclock.visualizer.mediumVisualizer[0] signalColor "\"dark\""
+attr enum light,dark
+par gptp_withclock.visualizer.mediumVisualizer[0] signalPropagationAnimationSpeed "nan "
+attr mutable ""
+par gptp_withclock.visualizer.mediumVisualizer[0] signalPropagationAnimationTime 1s
+attr unit s
+par gptp_withclock.visualizer.mediumVisualizer[0] signalPropagationAdditionalTime 0s
+attr unit s
+par gptp_withclock.visualizer.mediumVisualizer[0] signalTransmissionAnimationSpeed "nan "
+attr mutable ""
+par gptp_withclock.visualizer.mediumVisualizer[0] signalTransmissionAnimationTime 1s
+attr unit s
+par gptp_withclock.visualizer.mediumVisualizer[0] signalAnimationSpeedChangeTimeMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par gptp_withclock.visualizer.mediumVisualizer[0] signalAnimationSpeedChangeTime 1s
+attr unit s
+par gptp_withclock.visualizer.mediumVisualizer[0] displaySignalDepartures false
+par gptp_withclock.visualizer.mediumVisualizer[0] signalDepartureImage "\"misc/signal_departure.png\""
+par gptp_withclock.visualizer.mediumVisualizer[0] signalDeparturePlacementHint "\"topCenter\""
+par gptp_withclock.visualizer.mediumVisualizer[0] signalDeparturePlacementPriority 1
+par gptp_withclock.visualizer.mediumVisualizer[0] displaySignalArrivals false
+par gptp_withclock.visualizer.mediumVisualizer[0] signalArrivalImage "\"misc/signal_arrival.png\""
+par gptp_withclock.visualizer.mediumVisualizer[0] signalArrivalPlacementHint "\"topCenter\""
+par gptp_withclock.visualizer.mediumVisualizer[0] signalArrivalPlacementPriority -1
+par gptp_withclock.visualizer.mediumVisualizer[0] displayCommunicationRanges false
+par gptp_withclock.visualizer.mediumVisualizer[0] communicationRangeLineColor "\"blue\""
+par gptp_withclock.visualizer.mediumVisualizer[0] communicationRangeLineStyle "\"solid\""
+par gptp_withclock.visualizer.mediumVisualizer[0] communicationRangeLineWidth 1
+par gptp_withclock.visualizer.mediumVisualizer[0] displayInterferenceRanges false
+par gptp_withclock.visualizer.mediumVisualizer[0] interferenceRangeLineColor "\"gray\""
+par gptp_withclock.visualizer.mediumVisualizer[0] interferenceRangeLineStyle "\"solid\""
+par gptp_withclock.visualizer.mediumVisualizer[0] interferenceRangeLineWidth 1
+par gptp_withclock.visualizer.mediumVisualizer[0] autoPowerAxis true
+par gptp_withclock.visualizer.mediumVisualizer[0] signalMinPower "inf dBmW"
+attr unit dBmW
+par gptp_withclock.visualizer.mediumVisualizer[0] signalMaxPower 0dBmW
+attr unit dBmW
+par gptp_withclock.visualizer.mediumVisualizer[0] signalMinPowerDensity "inf dBmWpMHz"
+attr unit dBmWpMHz
+par gptp_withclock.visualizer.mediumVisualizer[0] signalMaxPowerDensity "-inf dBmWpMHz"
+attr unit dBmWpMHz
+par gptp_withclock.visualizer.mediumVisualizer[0] autoTimeAxis true
+par gptp_withclock.visualizer.mediumVisualizer[0] signalMinTime 0s
+attr unit s
+par gptp_withclock.visualizer.mediumVisualizer[0] signalMaxTime 0s
+attr unit s
+par gptp_withclock.visualizer.mediumVisualizer[0] autoFrequencyAxis true
+par gptp_withclock.visualizer.mediumVisualizer[0] signalMinFrequency "inf Hz"
+attr unit Hz
+par gptp_withclock.visualizer.mediumVisualizer[0] signalMaxFrequency "-inf Hz"
+attr unit Hz
+par gptp_withclock.visualizer.mediumVisualizer[0] displayMainPowerDensityMap false
+par gptp_withclock.visualizer.mediumVisualizer[0] mainPowerDensityMapPixmapDensity 1
+par gptp_withclock.visualizer.mediumVisualizer[0] mainPowerDensityMapMinX 0
+par gptp_withclock.visualizer.mediumVisualizer[0] mainPowerDensityMapMaxX "nan "
+par gptp_withclock.visualizer.mediumVisualizer[0] mainPowerDensityMapMinY 0
+par gptp_withclock.visualizer.mediumVisualizer[0] mainPowerDensityMapMaxY "nan "
+par gptp_withclock.visualizer.mediumVisualizer[0] mainPowerDensityMapZ 0
+par gptp_withclock.visualizer.mediumVisualizer[0] mainPowerDensityMapFigureXTickCount 3
+par gptp_withclock.visualizer.mediumVisualizer[0] mainPowerDensityMapFigureYTickCount 3
+par gptp_withclock.visualizer.mediumVisualizer[0] displayPowerDensityMaps false
+par gptp_withclock.visualizer.mediumVisualizer[0] powerDensityMapMode "\"auto\""
+attr enum total,signal,auto
+par gptp_withclock.visualizer.mediumVisualizer[0] powerDensityMapPixelMode "\"mean\""
+attr enum sample,partition,mean
+par gptp_withclock.visualizer.mediumVisualizer[0] powerDensityMapApproximationSize 10
+par gptp_withclock.visualizer.mediumVisualizer[0] powerDensityMapCenterFrequency "nan Hz"
+attr mutable ""
+attr unit Hz
+par gptp_withclock.visualizer.mediumVisualizer[0] powerDensityMapBandwidth 0Hz
+attr mutable ""
+attr unit Hz
+par gptp_withclock.visualizer.mediumVisualizer[0] powerDensityMapFigureWidth 200
+par gptp_withclock.visualizer.mediumVisualizer[0] powerDensityMapFigureHeight 120
+par gptp_withclock.visualizer.mediumVisualizer[0] powerDensityMapPixmapWidth 200
+par gptp_withclock.visualizer.mediumVisualizer[0] powerDensityMapPixmapHeight 120
+par gptp_withclock.visualizer.mediumVisualizer[0] powerDensityMapZ 0
+par gptp_withclock.visualizer.mediumVisualizer[0] powerDensityMapFigureXTickCount 3
+par gptp_withclock.visualizer.mediumVisualizer[0] powerDensityMapFigureYTickCount 3
+par gptp_withclock.visualizer.mediumVisualizer[0] displaySpectrums false
+par gptp_withclock.visualizer.mediumVisualizer[0] spectrumMode "\"auto\""
+attr enum total,signal,auto
+par gptp_withclock.visualizer.mediumVisualizer[0] spectrumFigureWidth 200
+par gptp_withclock.visualizer.mediumVisualizer[0] spectrumFigureHeight 120
+par gptp_withclock.visualizer.mediumVisualizer[0] spectrumFigureXTickCount 3
+par gptp_withclock.visualizer.mediumVisualizer[0] spectrumFigureYTickCount 5
+par gptp_withclock.visualizer.mediumVisualizer[0] spectrumFigureInterpolationSize 5
+par gptp_withclock.visualizer.mediumVisualizer[0] spectrumPlacementHint "\"bottomCenter\""
+par gptp_withclock.visualizer.mediumVisualizer[0] spectrumPlacementPriority -1
+par gptp_withclock.visualizer.mediumVisualizer[0] displaySpectrograms false
+par gptp_withclock.visualizer.mediumVisualizer[0] spectrogramMode "\"auto\""
+attr enum total,signal,auto
+par gptp_withclock.visualizer.mediumVisualizer[0] spectrogramPixelMode "\"mean\""
+attr enum sample,partition,mean
+par gptp_withclock.visualizer.mediumVisualizer[0] spectrogramFigureWidth 200
+par gptp_withclock.visualizer.mediumVisualizer[0] spectrogramFigureHeight 120
+par gptp_withclock.visualizer.mediumVisualizer[0] spectrogramPixmapWidth 200
+par gptp_withclock.visualizer.mediumVisualizer[0] spectrogramPixmapHeight 120
+par gptp_withclock.visualizer.mediumVisualizer[0] spectrogramFigureXTickCount 3
+par gptp_withclock.visualizer.mediumVisualizer[0] spectrogramFigureYTickCount 5
+par gptp_withclock.visualizer.mediumVisualizer[0] spectrogramPlacementHint "\"bottomCenter\""
+par gptp_withclock.visualizer.mediumVisualizer[0] spectrogramPlacementPriority -1
+par gptp_withclock.visualizer.mediumVisualizer[0] zIndex 0
+par gptp_withclock.visualizer.mediumVisualizer[0] signalShape "\"ring\""
+attr enum ring,sphere
+par gptp_withclock.visualizer.mediumVisualizer[0] signalOpacity 0.5
+par gptp_withclock.visualizer.mediumVisualizer[0] signalRingCount 20
+par gptp_withclock.visualizer.mediumVisualizer[0] signalRingSize 50m
+attr unit m
+par gptp_withclock.visualizer.mediumVisualizer[0] signalFadingDistance 50m
+attr unit m
+par gptp_withclock.visualizer.mediumVisualizer[0] signalFadingFactor 1.2
+par gptp_withclock.visualizer.mediumVisualizer[0] signalWaveCount 20
+par gptp_withclock.visualizer.mediumVisualizer[0] signalWaveLength 50m
+attr unit m
+par gptp_withclock.visualizer.mediumVisualizer[0] signalWaveWidth 10m
+attr unit m
+par gptp_withclock.visualizer.mediumVisualizer[0] signalWaveFadingAnimationSpeedFactor 1
+par gptp_withclock.visualizer.mediumVisualizer[0] displayCommunicationHeat false
+par gptp_withclock.visualizer.obstacleLossVisualizer[0] typename "\"inet.visualizer.canvas.physicallayer.TracingObstacleLossCanvasVisualizer\""
+par gptp_withclock.visualizer.obstacleLossVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.obstacleLossVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.obstacleLossVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.obstacleLossVisualizer[0] displayIntersections false
+par gptp_withclock.visualizer.obstacleLossVisualizer[0] intersectionLineColor "\"red\""
+par gptp_withclock.visualizer.obstacleLossVisualizer[0] intersectionLineStyle "\"solid\""
+par gptp_withclock.visualizer.obstacleLossVisualizer[0] intersectionLineWidth 1
+par gptp_withclock.visualizer.obstacleLossVisualizer[0] displayFaceNormalVectors false
+par gptp_withclock.visualizer.obstacleLossVisualizer[0] faceNormalLineColor "\"grey\""
+par gptp_withclock.visualizer.obstacleLossVisualizer[0] faceNormalLineStyle "\"solid\""
+par gptp_withclock.visualizer.obstacleLossVisualizer[0] faceNormalLineWidth 1
+par gptp_withclock.visualizer.obstacleLossVisualizer[0] fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par gptp_withclock.visualizer.obstacleLossVisualizer[0] fadeOutTime 1s
+attr unit s
+par gptp_withclock.visualizer.obstacleLossVisualizer[0] fadeOutAnimationSpeed 0
+par gptp_withclock.visualizer.obstacleLossVisualizer[0] zIndex 0
+par gptp_withclock.visualizer.packetDropVisualizer[0] typename "\"inet.visualizer.canvas.common.PacketDropCanvasVisualizer\""
+par gptp_withclock.visualizer.packetDropVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.packetDropVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.packetDropVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.packetDropVisualizer[0] displayPacketDrops false
+par gptp_withclock.visualizer.packetDropVisualizer[0] nodeFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.packetDropVisualizer[0] interfaceFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.packetDropVisualizer[0] packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par gptp_withclock.visualizer.packetDropVisualizer[0] detailsFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.packetDropVisualizer[0] icon "\"msg/packet_s\""
+par gptp_withclock.visualizer.packetDropVisualizer[0] iconTintAmount 1
+par gptp_withclock.visualizer.packetDropVisualizer[0] iconTintColor "\"dark\""
+par gptp_withclock.visualizer.packetDropVisualizer[0] labelFormat "\"%n\""
+attr mutable ""
+par gptp_withclock.visualizer.packetDropVisualizer[0] labelFont "\"<default>\""
+par gptp_withclock.visualizer.packetDropVisualizer[0] labelColor "\"black\""
+par gptp_withclock.visualizer.packetDropVisualizer[0] fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par gptp_withclock.visualizer.packetDropVisualizer[0] fadeOutTime 1s
+attr unit s
+par gptp_withclock.visualizer.packetDropVisualizer[0] fadeOutAnimationSpeed 0
+par gptp_withclock.visualizer.packetDropVisualizer[0] zIndex 10
+par gptp_withclock.visualizer.packetDropVisualizer[0] dx 32
+par gptp_withclock.visualizer.packetDropVisualizer[0] dy 64
+par gptp_withclock.visualizer.queueVisualizer[0] typename "\"inet.visualizer.canvas.common.QueueCanvasVisualizer\""
+par gptp_withclock.visualizer.queueVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.queueVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.queueVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.queueVisualizer[0] networkNodeVisualizerModule "\"gptp_withclock.visualizer.networkNodeVisualizer[0]\""
+par gptp_withclock.visualizer.queueVisualizer[0] displayQueues false
+par gptp_withclock.visualizer.queueVisualizer[0] queueFilter "\"**\""
+par gptp_withclock.visualizer.queueVisualizer[0] color "\"blue\""
+par gptp_withclock.visualizer.queueVisualizer[0] width 8
+par gptp_withclock.visualizer.queueVisualizer[0] height 24
+par gptp_withclock.visualizer.queueVisualizer[0] spacing 2
+par gptp_withclock.visualizer.queueVisualizer[0] placementHint "\"right\""
+par gptp_withclock.visualizer.queueVisualizer[0] placementPriority 0
+par gptp_withclock.visualizer.queueVisualizer[0] zIndex 10
+par gptp_withclock.visualizer.gateScheduleVisualizer[0] typename "\"inet.visualizer.canvas.common.GateScheduleCanvasVisualizer\""
+par gptp_withclock.visualizer.gateScheduleVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.gateScheduleVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.gateScheduleVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.gateScheduleVisualizer[0] networkNodeVisualizerModule "\"gptp_withclock.visualizer.networkNodeVisualizer[0]\""
+par gptp_withclock.visualizer.gateScheduleVisualizer[0] displayGateSchedules false
+par gptp_withclock.visualizer.gateScheduleVisualizer[0] labelFormat "\"%i %D\""
+par gptp_withclock.visualizer.gateScheduleVisualizer[0] gateFilter "\"**\""
+par gptp_withclock.visualizer.gateScheduleVisualizer[0] width 100
+par gptp_withclock.visualizer.gateScheduleVisualizer[0] height 8
+par gptp_withclock.visualizer.gateScheduleVisualizer[0] spacing 2
+par gptp_withclock.visualizer.gateScheduleVisualizer[0] placementHint "\"right\""
+par gptp_withclock.visualizer.gateScheduleVisualizer[0] placementPriority 0
+par gptp_withclock.visualizer.gateScheduleVisualizer[0] displayDuration 0s
+attr mutable ""
+attr unit s
+par gptp_withclock.visualizer.gateScheduleVisualizer[0] currentTimePosition 50
+par gptp_withclock.visualizer.gateScheduleVisualizer[0] zIndex 10
+par gptp_withclock.visualizer.radioVisualizer[0] typename "\"inet.visualizer.canvas.physicallayer.RadioCanvasVisualizer\""
+par gptp_withclock.visualizer.radioVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.radioVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.radioVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.radioVisualizer[0] networkNodeVisualizerModule "\"gptp_withclock.visualizer.networkNodeVisualizer[0]\""
+par gptp_withclock.visualizer.radioVisualizer[0] displayRadios false
+par gptp_withclock.visualizer.radioVisualizer[0] displayRadioMode true
+par gptp_withclock.visualizer.radioVisualizer[0] displayReceptionState true
+par gptp_withclock.visualizer.radioVisualizer[0] displayTransmissionState true
+par gptp_withclock.visualizer.radioVisualizer[0] displayAntennaLobes false
+par gptp_withclock.visualizer.radioVisualizer[0] radioFilter "\"**\""
+attr mutable ""
+par gptp_withclock.visualizer.radioVisualizer[0] radioModeImages "\"block/process_vs block/timer_vs block/wrx_vs block/wtx_vs block/wrxtx_vs block/cogwheel_vs\""
+par gptp_withclock.visualizer.radioVisualizer[0] receptionStateImages "\"- - misc/receiving misc/receiving\""
+par gptp_withclock.visualizer.radioVisualizer[0] transmissionStateImages "\"- - misc/transmitting\""
+par gptp_withclock.visualizer.radioVisualizer[0] width 16
+par gptp_withclock.visualizer.radioVisualizer[0] height 16
+par gptp_withclock.visualizer.radioVisualizer[0] placementHint "\"bottomRight\""
+par gptp_withclock.visualizer.radioVisualizer[0] placementPriority 0
+par gptp_withclock.visualizer.radioVisualizer[0] antennaLobeNormalize false
+par gptp_withclock.visualizer.radioVisualizer[0] antennaLobeRelativeLabels false
+par gptp_withclock.visualizer.radioVisualizer[0] antennaLobePlaneGlobal true
+par gptp_withclock.visualizer.radioVisualizer[0] antennaLobePlane "\"view\""
+attr enum view,xy,xz,yz
+par gptp_withclock.visualizer.radioVisualizer[0] antennaLobeMode "\"logarithmic\""
+attr enum logarithmic,linear
+par gptp_withclock.visualizer.radioVisualizer[0] antennaLobeLogarithmicBase 10
+par gptp_withclock.visualizer.radioVisualizer[0] antennaLobeLogarithmicScale 100
+par gptp_withclock.visualizer.radioVisualizer[0] antennaLobeRadius 100
+par gptp_withclock.visualizer.radioVisualizer[0] antennaLobeStep 10deg
+attr unit deg
+par gptp_withclock.visualizer.radioVisualizer[0] antennaLobeOpacity 0.25
+par gptp_withclock.visualizer.radioVisualizer[0] antennaLobeLineSmooth true
+par gptp_withclock.visualizer.radioVisualizer[0] antennaLobeLineColor "\"black\""
+par gptp_withclock.visualizer.radioVisualizer[0] antennaLobeLineStyle "\"solid\""
+par gptp_withclock.visualizer.radioVisualizer[0] antennaLobeLineWidth 1
+par gptp_withclock.visualizer.radioVisualizer[0] antennaLobeFillColor "\"white\""
+par gptp_withclock.visualizer.radioVisualizer[0] zIndex 10
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] typename "\"inet.visualizer.canvas.physicallayer.PhysicalLinkCanvasVisualizer\""
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] displayLinks false
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] activityLevel "\"service\""
+attr enum service,peer,protocol
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] nodeFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] interfaceFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] lineColor "\"olive\""
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] lineStyle "\"dotted\""
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] lineWidth 3
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] lineShift 16
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] lineShiftMode "\"normal\""
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] lineContactSpacing 3
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] labelFormat "\"%n\""
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] labelFont "\"<default>, 8px\""
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] labelColor "\"olive\""
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] fadeOutTime 1s
+attr unit s
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] fadeOutAnimationSpeed 0
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] holdAnimationTime 0s
+attr unit s
+par gptp_withclock.visualizer.physicalLinkVisualizer[0] zIndex 1
+par gptp_withclock.visualizer.interfaceTableVisualizer[0] typename "\"inet.visualizer.canvas.linklayer.InterfaceTableCanvasVisualizer\""
+par gptp_withclock.visualizer.interfaceTableVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.interfaceTableVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.interfaceTableVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.interfaceTableVisualizer[0] networkNodeVisualizerModule "\"gptp_withclock.visualizer.networkNodeVisualizer[0]\""
+par gptp_withclock.visualizer.interfaceTableVisualizer[0] displayInterfaceTables false
+par gptp_withclock.visualizer.interfaceTableVisualizer[0] displayWiredInterfacesAtConnections true
+par gptp_withclock.visualizer.interfaceTableVisualizer[0] displayBackground false
+par gptp_withclock.visualizer.interfaceTableVisualizer[0] nodeFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.interfaceTableVisualizer[0] interfaceFilter "\"not(lo*)\""
+attr mutable ""
+par gptp_withclock.visualizer.interfaceTableVisualizer[0] format "\"%N %\\\\%a%/%l\""
+attr mutable ""
+par gptp_withclock.visualizer.interfaceTableVisualizer[0] placementHint "\"top\""
+par gptp_withclock.visualizer.interfaceTableVisualizer[0] placementPriority 0
+par gptp_withclock.visualizer.interfaceTableVisualizer[0] font "\"<default>\""
+par gptp_withclock.visualizer.interfaceTableVisualizer[0] textColor "\"#005030\""
+par gptp_withclock.visualizer.interfaceTableVisualizer[0] backgroundColor "\"white\""
+par gptp_withclock.visualizer.interfaceTableVisualizer[0] opacity 1
+par gptp_withclock.visualizer.interfaceTableVisualizer[0] zIndex 10
+par gptp_withclock.visualizer.dataLinkVisualizer[0] typename "\"inet.visualizer.canvas.linklayer.DataLinkCanvasVisualizer\""
+par gptp_withclock.visualizer.dataLinkVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.dataLinkVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.dataLinkVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.dataLinkVisualizer[0] displayLinks true
+par gptp_withclock.visualizer.dataLinkVisualizer[0] activityLevel "\"protocol\""
+attr enum service,peer,protocol
+par gptp_withclock.visualizer.dataLinkVisualizer[0] nodeFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.dataLinkVisualizer[0] interfaceFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.dataLinkVisualizer[0] packetFilter "(omnetpp::cValueHolder)holder: \"GptpSync\""
+attr mutable ""
+par gptp_withclock.visualizer.dataLinkVisualizer[0] lineColor "\"blue2\""
+par gptp_withclock.visualizer.dataLinkVisualizer[0] lineStyle "\"solid\""
+par gptp_withclock.visualizer.dataLinkVisualizer[0] lineWidth 3
+par gptp_withclock.visualizer.dataLinkVisualizer[0] lineShift 16
+par gptp_withclock.visualizer.dataLinkVisualizer[0] lineShiftMode "\"normal\""
+par gptp_withclock.visualizer.dataLinkVisualizer[0] lineContactSpacing 3
+par gptp_withclock.visualizer.dataLinkVisualizer[0] lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par gptp_withclock.visualizer.dataLinkVisualizer[0] labelFormat "\"%n\""
+par gptp_withclock.visualizer.dataLinkVisualizer[0] labelFont "\"<default>, 8px\""
+par gptp_withclock.visualizer.dataLinkVisualizer[0] labelColor "\"darkcyan\""
+par gptp_withclock.visualizer.dataLinkVisualizer[0] fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par gptp_withclock.visualizer.dataLinkVisualizer[0] fadeOutTime 1s
+attr unit s
+par gptp_withclock.visualizer.dataLinkVisualizer[0] fadeOutAnimationSpeed 0
+par gptp_withclock.visualizer.dataLinkVisualizer[0] holdAnimationTime 0s
+attr unit s
+par gptp_withclock.visualizer.dataLinkVisualizer[0] zIndex 2
+par gptp_withclock.visualizer.linkBreakVisualizer[0] typename "\"inet.visualizer.canvas.linklayer.LinkBreakCanvasVisualizer\""
+par gptp_withclock.visualizer.linkBreakVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.linkBreakVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.linkBreakVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.linkBreakVisualizer[0] displayLinkBreaks false
+par gptp_withclock.visualizer.linkBreakVisualizer[0] nodeFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.linkBreakVisualizer[0] interfaceFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.linkBreakVisualizer[0] packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par gptp_withclock.visualizer.linkBreakVisualizer[0] icon "\"status/stop\""
+par gptp_withclock.visualizer.linkBreakVisualizer[0] iconTintAmount 0
+par gptp_withclock.visualizer.linkBreakVisualizer[0] iconTintColor "\"\""
+par gptp_withclock.visualizer.linkBreakVisualizer[0] fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par gptp_withclock.visualizer.linkBreakVisualizer[0] fadeOutTime 1s
+attr unit s
+par gptp_withclock.visualizer.linkBreakVisualizer[0] fadeOutAnimationSpeed 0
+par gptp_withclock.visualizer.linkBreakVisualizer[0] zIndex 2
+par gptp_withclock.visualizer.ieee80211Visualizer[0] typename "\"inet.visualizer.canvas.linklayer.Ieee80211CanvasVisualizer\""
+par gptp_withclock.visualizer.ieee80211Visualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.ieee80211Visualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.ieee80211Visualizer[0] tags "\"\""
+par gptp_withclock.visualizer.ieee80211Visualizer[0] networkNodeVisualizerModule "\"gptp_withclock.visualizer.networkNodeVisualizer[0]\""
+par gptp_withclock.visualizer.ieee80211Visualizer[0] displayAssociations false
+par gptp_withclock.visualizer.ieee80211Visualizer[0] nodeFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.ieee80211Visualizer[0] interfaceFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.ieee80211Visualizer[0] minPower -85dBm
+attr unit dBm
+par gptp_withclock.visualizer.ieee80211Visualizer[0] maxPower -50dBm
+attr unit dBm
+par gptp_withclock.visualizer.ieee80211Visualizer[0] icons "\"misc/signal_power_0 misc/signal_power_1 misc/signal_power_2 misc/signal_power_3\""
+par gptp_withclock.visualizer.ieee80211Visualizer[0] iconColor "\"dark\""
+attr enum light,dark
+par gptp_withclock.visualizer.ieee80211Visualizer[0] labelFont "\"<default>\""
+par gptp_withclock.visualizer.ieee80211Visualizer[0] labelColor "\"black\""
+par gptp_withclock.visualizer.ieee80211Visualizer[0] placementHint "\"top\""
+par gptp_withclock.visualizer.ieee80211Visualizer[0] placementPriority 0
+par gptp_withclock.visualizer.ieee80211Visualizer[0] zIndex 2
+par gptp_withclock.visualizer.networkRouteVisualizer[0] typename "\"inet.visualizer.canvas.networklayer.NetworkRouteCanvasVisualizer\""
+par gptp_withclock.visualizer.networkRouteVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.networkRouteVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.networkRouteVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.networkRouteVisualizer[0] displayRoutes false
+par gptp_withclock.visualizer.networkRouteVisualizer[0] startPathSignal "\"packetReceivedFromUpper\""
+par gptp_withclock.visualizer.networkRouteVisualizer[0] extendPathSignal "\"packetReceivedFromLower\""
+par gptp_withclock.visualizer.networkRouteVisualizer[0] endPathSignal "\"packetSentToUpper\""
+par gptp_withclock.visualizer.networkRouteVisualizer[0] nodeFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.networkRouteVisualizer[0] packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par gptp_withclock.visualizer.networkRouteVisualizer[0] lineColor "\"dark\""
+attr enum light,dark
+par gptp_withclock.visualizer.networkRouteVisualizer[0] lineStyle "\"solid\""
+par gptp_withclock.visualizer.networkRouteVisualizer[0] lineWidth 3
+par gptp_withclock.visualizer.networkRouteVisualizer[0] lineSmooth false
+par gptp_withclock.visualizer.networkRouteVisualizer[0] lineShift 16
+par gptp_withclock.visualizer.networkRouteVisualizer[0] lineShiftMode "\"normal\""
+par gptp_withclock.visualizer.networkRouteVisualizer[0] lineContactSpacing 3
+par gptp_withclock.visualizer.networkRouteVisualizer[0] lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par gptp_withclock.visualizer.networkRouteVisualizer[0] labelFormat "\"%n\""
+par gptp_withclock.visualizer.networkRouteVisualizer[0] labelFont "\"<default>, 8px\""
+par gptp_withclock.visualizer.networkRouteVisualizer[0] labelColor "\"\""
+par gptp_withclock.visualizer.networkRouteVisualizer[0] fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par gptp_withclock.visualizer.networkRouteVisualizer[0] fadeOutTime 1s
+attr unit s
+par gptp_withclock.visualizer.networkRouteVisualizer[0] fadeOutAnimationSpeed 0
+par gptp_withclock.visualizer.networkRouteVisualizer[0] zIndex 3
+par gptp_withclock.visualizer.routingTableVisualizer[0] typename "\"inet.visualizer.canvas.networklayer.RoutingTableCanvasVisualizer\""
+par gptp_withclock.visualizer.routingTableVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.routingTableVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.routingTableVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.routingTableVisualizer[0] displayRoutingTables false
+par gptp_withclock.visualizer.routingTableVisualizer[0] displayRoutesIndividually true
+par gptp_withclock.visualizer.routingTableVisualizer[0] displayLabels true
+par gptp_withclock.visualizer.routingTableVisualizer[0] destinationFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.routingTableVisualizer[0] nodeFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.routingTableVisualizer[0] lineColor "\"black\""
+par gptp_withclock.visualizer.routingTableVisualizer[0] lineStyle "\"solid\""
+par gptp_withclock.visualizer.routingTableVisualizer[0] lineWidth 2
+par gptp_withclock.visualizer.routingTableVisualizer[0] lineShift 16
+par gptp_withclock.visualizer.routingTableVisualizer[0] lineShiftMode "\"normal\""
+par gptp_withclock.visualizer.routingTableVisualizer[0] lineContactSpacing 3
+par gptp_withclock.visualizer.routingTableVisualizer[0] lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par gptp_withclock.visualizer.routingTableVisualizer[0] labelFormat "\"%d/%m -> %g (%n)\""
+attr mutable ""
+par gptp_withclock.visualizer.routingTableVisualizer[0] labelFont "\"<default>, 8px\""
+par gptp_withclock.visualizer.routingTableVisualizer[0] labelColor "\"black\""
+par gptp_withclock.visualizer.routingTableVisualizer[0] zIndex 0
+par gptp_withclock.visualizer.transportRouteVisualizer[0] typename "\"inet.visualizer.canvas.transportlayer.TransportRouteCanvasVisualizer\""
+par gptp_withclock.visualizer.transportRouteVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.transportRouteVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.transportRouteVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.transportRouteVisualizer[0] displayRoutes false
+par gptp_withclock.visualizer.transportRouteVisualizer[0] startPathSignal "\"packetReceivedFromUpper\""
+par gptp_withclock.visualizer.transportRouteVisualizer[0] extendPathSignal "\"packetReceivedFromLower\""
+par gptp_withclock.visualizer.transportRouteVisualizer[0] endPathSignal "\"packetSentToUpper\""
+par gptp_withclock.visualizer.transportRouteVisualizer[0] nodeFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.transportRouteVisualizer[0] packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par gptp_withclock.visualizer.transportRouteVisualizer[0] lineColor "\"dark\""
+attr enum light,dark
+par gptp_withclock.visualizer.transportRouteVisualizer[0] lineStyle "\"solid\""
+par gptp_withclock.visualizer.transportRouteVisualizer[0] lineWidth 3
+par gptp_withclock.visualizer.transportRouteVisualizer[0] lineSmooth false
+par gptp_withclock.visualizer.transportRouteVisualizer[0] lineShift 16
+par gptp_withclock.visualizer.transportRouteVisualizer[0] lineShiftMode "\"normal\""
+par gptp_withclock.visualizer.transportRouteVisualizer[0] lineContactSpacing 3
+par gptp_withclock.visualizer.transportRouteVisualizer[0] lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par gptp_withclock.visualizer.transportRouteVisualizer[0] labelFormat "\"%n\""
+par gptp_withclock.visualizer.transportRouteVisualizer[0] labelFont "\"<default>, 8px\""
+par gptp_withclock.visualizer.transportRouteVisualizer[0] labelColor "\"\""
+par gptp_withclock.visualizer.transportRouteVisualizer[0] fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par gptp_withclock.visualizer.transportRouteVisualizer[0] fadeOutTime 1s
+attr unit s
+par gptp_withclock.visualizer.transportRouteVisualizer[0] fadeOutAnimationSpeed 0
+par gptp_withclock.visualizer.transportRouteVisualizer[0] zIndex 4
+par gptp_withclock.visualizer.transportConnectionVisualizer[0] typename "\"inet.visualizer.canvas.transportlayer.TransportConnectionCanvasVisualizer\""
+par gptp_withclock.visualizer.transportConnectionVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.transportConnectionVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.transportConnectionVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.transportConnectionVisualizer[0] networkNodeVisualizerModule "\"gptp_withclock.visualizer.networkNodeVisualizer[0]\""
+par gptp_withclock.visualizer.transportConnectionVisualizer[0] displayTransportConnections false
+par gptp_withclock.visualizer.transportConnectionVisualizer[0] sourceNodeFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.transportConnectionVisualizer[0] sourcePortFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.transportConnectionVisualizer[0] destinationNodeFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.transportConnectionVisualizer[0] destinationPortFilter "\"*\""
+attr mutable ""
+par gptp_withclock.visualizer.transportConnectionVisualizer[0] icon "\"misc/marker_s\""
+par gptp_withclock.visualizer.transportConnectionVisualizer[0] iconColor "\"dark\""
+attr enum light,dark
+par gptp_withclock.visualizer.transportConnectionVisualizer[0] labelFont "\"<default>\""
+par gptp_withclock.visualizer.transportConnectionVisualizer[0] labelColor "\"black\""
+par gptp_withclock.visualizer.transportConnectionVisualizer[0] placementHint "\"top\""
+par gptp_withclock.visualizer.transportConnectionVisualizer[0] placementPriority 0
+par gptp_withclock.visualizer.transportConnectionVisualizer[0] zIndex 4
+par gptp_withclock.visualizer.failureProtectionConfigurationVisualizer[0] typename "\"inet.visualizer.canvas.configurator.FailureProtectionConfigurationCanvasVisualizer\""
+par gptp_withclock.visualizer.failureProtectionConfigurationVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.failureProtectionConfigurationVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.failureProtectionConfigurationVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.failureProtectionConfigurationVisualizer[0] displayTrees false
+par gptp_withclock.visualizer.failureProtectionConfigurationVisualizer[0] lineColor "\"dark\""
+attr enum light,dark
+par gptp_withclock.visualizer.failureProtectionConfigurationVisualizer[0] lineStyle "\"solid\""
+par gptp_withclock.visualizer.failureProtectionConfigurationVisualizer[0] lineWidth 3
+par gptp_withclock.visualizer.failureProtectionConfigurationVisualizer[0] lineSmooth false
+par gptp_withclock.visualizer.failureProtectionConfigurationVisualizer[0] lineShift 16
+par gptp_withclock.visualizer.failureProtectionConfigurationVisualizer[0] lineShiftMode "\"normal\""
+par gptp_withclock.visualizer.failureProtectionConfigurationVisualizer[0] lineContactSpacing 3
+par gptp_withclock.visualizer.failureProtectionConfigurationVisualizer[0] lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par gptp_withclock.visualizer.failureProtectionConfigurationVisualizer[0] failureProtectionConfiguratorModule "\"failureProtectionConfigurator\""
+par gptp_withclock.visualizer.failureProtectionConfigurationVisualizer[0] streamFilter "\"*\""
+par gptp_withclock.visualizer.failureProtectionConfigurationVisualizer[0] zIndex 3
+par gptp_withclock.visualizer.streamRedundancyConfigurationVisualizer[0] typename "\"inet.visualizer.canvas.configurator.StreamRedundancyConfigurationCanvasVisualizer\""
+par gptp_withclock.visualizer.streamRedundancyConfigurationVisualizer[0] visualizationTargetModule "\"^.^\""
+par gptp_withclock.visualizer.streamRedundancyConfigurationVisualizer[0] visualizationSubjectModule "\"^.^\""
+par gptp_withclock.visualizer.streamRedundancyConfigurationVisualizer[0] tags "\"\""
+par gptp_withclock.visualizer.streamRedundancyConfigurationVisualizer[0] displayTrees false
+par gptp_withclock.visualizer.streamRedundancyConfigurationVisualizer[0] lineColor "\"dark\""
+attr enum light,dark
+par gptp_withclock.visualizer.streamRedundancyConfigurationVisualizer[0] lineStyle "\"solid\""
+par gptp_withclock.visualizer.streamRedundancyConfigurationVisualizer[0] lineWidth 3
+par gptp_withclock.visualizer.streamRedundancyConfigurationVisualizer[0] lineSmooth false
+par gptp_withclock.visualizer.streamRedundancyConfigurationVisualizer[0] lineShift 16
+par gptp_withclock.visualizer.streamRedundancyConfigurationVisualizer[0] lineShiftMode "\"normal\""
+par gptp_withclock.visualizer.streamRedundancyConfigurationVisualizer[0] lineContactSpacing 3
+par gptp_withclock.visualizer.streamRedundancyConfigurationVisualizer[0] lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par gptp_withclock.visualizer.streamRedundancyConfigurationVisualizer[0] streamRedundancyConfiguratorModule "\"streamRedundancyConfigurator\""
+par gptp_withclock.visualizer.streamRedundancyConfigurationVisualizer[0] streamFilter "\"*\""
+par gptp_withclock.visualizer.streamRedundancyConfigurationVisualizer[0] zIndex 3
+par gptp_withclock.visualizer typename "\"inet.visualizer.canvas.integrated.IntegratedMultiCanvasVisualizer\""
+par gptp_withclock.visualizer numSceneVisualizers 1
+par gptp_withclock.visualizer numPhysicalEnvironmentVisualizers 1
+par gptp_withclock.visualizer numNetworkNodeVisualizers 1
+par gptp_withclock.visualizer numNetworkConnectionVisualizers 1
+par gptp_withclock.visualizer numMobilityVisualizers 1
+par gptp_withclock.visualizer numStatisticVisualizers 1
+par gptp_withclock.visualizer numInfoVisualizers 2
+par gptp_withclock.visualizer numEnergyStorageVisualizers 1
+par gptp_withclock.visualizer numMediumVisualizers 1
+par gptp_withclock.visualizer numObstacleLossVisualizers 1
+par gptp_withclock.visualizer numPacketDropVisualizers 1
+par gptp_withclock.visualizer numQueueVisualizers 1
+par gptp_withclock.visualizer numGateScheduleVisualizers 1
+par gptp_withclock.visualizer numRadioVisualizers 1
+par gptp_withclock.visualizer numPhysicalLinkVisualizers 1
+par gptp_withclock.visualizer numInterfaceTableVisualizers 1
+par gptp_withclock.visualizer numDataLinkVisualizers 1
+par gptp_withclock.visualizer numLinkBreakVisualizers 1
+par gptp_withclock.visualizer numIeee80211Visualizers 1
+par gptp_withclock.visualizer numNetworkRouteVisualizers 1
+par gptp_withclock.visualizer numRoutingTableVisualizers 1
+par gptp_withclock.visualizer numTransportRouteVisualizers 1
+par gptp_withclock.visualizer numTransportConnectionVisualizers 1
+par gptp_withclock.visualizer numFailureProtectionConfigurationVisualizers 1
+par gptp_withclock.visualizer numStreamRedundancyConfigurationVisualizers 1
+par gptp_withclock.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator\""
+par gptp_withclock.configurator minLinkWeight 0.001
+par gptp_withclock.configurator configureIsolatedNetworksSeparatly false
+par gptp_withclock.configurator config "<config>...</config> at content:1"
+par gptp_withclock.configurator assignAddresses true
+par gptp_withclock.configurator assignUniqueAddresses true
+par gptp_withclock.configurator assignDisjunctSubnetAddresses true
+par gptp_withclock.configurator addStaticRoutes true
+par gptp_withclock.configurator addDefaultRoutes true
+par gptp_withclock.configurator addSubnetRoutes true
+par gptp_withclock.configurator addDirectRoutes true
+par gptp_withclock.configurator optimizeRoutes true
+par gptp_withclock.configurator dumpTopology false
+par gptp_withclock.configurator dumpLinks false
+par gptp_withclock.configurator dumpAddresses false
+par gptp_withclock.configurator dumpRoutes false
+par gptp_withclock.configurator dumpConfig "\"\""
+par gptp_withclock.macForwardingTableConfigurator typename "\"inet.linklayer.configurator.MacForwardingTableConfigurator\""
+par gptp_withclock.switch.eth[0].phys$o.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.ethg$i[0].channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[1].phys$o.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.ethg$i[1].channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[2].phys$o.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.ethg$i[2].channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.macTable typename "\"inet.linklayer.ethernet.common.MacForwardingTable\""
+par gptp_withclock.switch.macTable agingTime 120s
+attr unit s
+par gptp_withclock.switch.macTable forwardingTable "[{address: \"0A-AA-00-00-00-04\", interface: \"eth1\"}, {address: \"0A-AA-00-00-00-05\", interface: \"eth0\"}, {address: \"0A-AA-00-00-00-06\", interface: \"eth2\"}, {address: \"01-00-5E-00-00-01\", interface: \"eth1\"}, {address: \"01-00-5E-00-00-01\", interface: \"eth0\"}, {address: \"01-00-5E-00-00-01\", interface: \"eth2\"}]"
+attr mutable ""
+par gptp_withclock.switch.macTable forwardingTableFile "\"\""
+par gptp_withclock.switch.macTable interfaceTableModule "\"gptp_withclock.switch.interfaceTable\""
+par gptp_withclock.switch.macTable displayStringTextFormat "\"addr: %a\\nvlan: %v\""
+par gptp_withclock.switch.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par gptp_withclock.switch.interfaceTable displayAddresses false
+par gptp_withclock.switch.clock.oscillator typename "\"inet.clock.oscillator.RandomDriftOscillator\""
+par gptp_withclock.switch.clock.oscillator displayStringTextFormat "\"%c (%n + %d)\""
+par gptp_withclock.switch.clock.oscillator nominalTickLength 0s
+attr unit s
+par gptp_withclock.switch.clock.oscillator tickOffset 0s
+attr unit s
+par gptp_withclock.switch.clock.oscillator initialDriftRate 0ppm
+attr unit ppm
+par gptp_withclock.switch.clock.oscillator changeInterval 0.005s
+attr unit s
+par gptp_withclock.switch.clock.oscillator driftRateChange "uniform(-0.05ppm, 0.05ppm)"
+attr unit ppm
+par gptp_withclock.switch.clock.oscillator driftRateChangeLowerLimit -0.1ppm
+attr unit ppm
+par gptp_withclock.switch.clock.oscillator driftRateChangeUpperLimit 0.1ppm
+attr unit ppm
+par gptp_withclock.switch.clock typename "\"inet.clock.model.SettableClock\""
+par gptp_withclock.switch.clock displayStringTextFormat "\"diff: %d\""
+par gptp_withclock.switch.clock referenceClock "\"tsnClock.clock\""
+par gptp_withclock.switch.clock emitClockTimeInterval 0s
+attr unit s
+par gptp_withclock.switch.clock initialClockTime 0s
+attr unit s
+par gptp_withclock.switch.clock roundingMode "\"up\""
+attr enum down,up,closer,none
+par gptp_withclock.switch.clock defaultOverdueClockEventHandlingMode "\"execute\""
+attr enum execute,skip,error
+par gptp_withclock.switch.gptp typename "\"inet.linklayer.ieee8021as.Gptp\""
+par gptp_withclock.switch.gptp clockModule "\"gptp_withclock.switch.clock\""
+par gptp_withclock.switch.gptp interfaceTableModule "\"gptp_withclock.switch.interfaceTable\""
+par gptp_withclock.switch.gptp gptpNodeType "\"SLAVE_NODE\""
+par gptp_withclock.switch.gptp domainNumber 0
+par gptp_withclock.switch.gptp slavePort "\"eth2\""
+par gptp_withclock.switch.gptp masterPorts []
+par gptp_withclock.switch.gptp correctionField 0s
+attr unit s
+par gptp_withclock.switch.gptp syncInterval 0.125s
+attr unit s
+par gptp_withclock.switch.gptp pdelayInterval 1s
+attr unit s
+par gptp_withclock.switch.gptp syncInitialOffset 0.125s
+attr unit s
+par gptp_withclock.switch.gptp pdelayInitialOffset 0s
+attr unit s
+par gptp_withclock.switch.gptp clockResetThreshold 1e-08s
+attr unit s
+par gptp_withclock.switch.gptp gamma 1
+par gptp_withclock.switch.gptp delta 0.7
+par gptp_withclock.switch.gptp pDelayReqProcessingTime 8e-06s
+attr unit s
+par gptp_withclock.switch.gptp followUpInterval 7e-06s
+attr unit s
+par gptp_withclock.switch.gptp synchronizationClockTimeError 0s
+attr unit s
+par gptp_withclock.switch.gptp synchronizationOscillatorCompensationError 0ppm
+attr unit ppm
+par gptp_withclock.switch.sc typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.switch.sc displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.sc forwardServiceRegistration true
+par gptp_withclock.switch.sc forwardProtocolRegistration true
+par gptp_withclock.switch.cb typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.switch.cb displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.cb forwardServiceRegistration true
+par gptp_withclock.switch.cb forwardProtocolRegistration true
+par gptp_withclock.switch.bridging.directionReverser.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.bridging.directionReverser.join.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.bridging.directionReverser.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.bridging.directionReverser.fork.out[0].channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.bridging.directionReverser.fork typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.switch.bridging.directionReverser.fork displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.bridging.directionReverser.fork forwardServiceRegistration false
+par gptp_withclock.switch.bridging.directionReverser.fork forwardProtocolRegistration true
+par gptp_withclock.switch.bridging.directionReverser.reverser typename "\"inet.linklayer.ethernet.common.PacketDirectionReverser\""
+par gptp_withclock.switch.bridging.directionReverser.reverser displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.bridging.directionReverser.reverser forwardVlan true
+par gptp_withclock.switch.bridging.directionReverser.reverser forwardPcp true
+par gptp_withclock.switch.bridging.directionReverser.reverser excludeEncapsulationProtocols []
+par gptp_withclock.switch.bridging.directionReverser.join typename "\"inet.queueing.common.PacketMultiplexer\""
+par gptp_withclock.switch.bridging.directionReverser.join displayStringTextFormat "\"passed %p pk (%l)\""
+par gptp_withclock.switch.bridging.directionReverser.join forwardServiceRegistration true
+par gptp_withclock.switch.bridging.directionReverser.join forwardProtocolRegistration false
+par gptp_withclock.switch.bridging.directionReverser typename "\"inet.linklayer.ethernet.common.DirectionReverserLayer\""
+par gptp_withclock.switch.bridging.interfaceRelay.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.bridging.interfaceRelay.selector.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.bridging.interfaceRelay.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.bridging.interfaceRelay.learner.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.bridging.interfaceRelay.learner typename "\"inet.linklayer.ethernet.common.RelayInterfaceLearner\""
+par gptp_withclock.switch.bridging.interfaceRelay.learner displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.bridging.interfaceRelay.learner macTableModule "\"gptp_withclock.switch.macTable\""
+par gptp_withclock.switch.bridging.interfaceRelay.learner interfaceTableModule "\"gptp_withclock.switch.interfaceTable\""
+par gptp_withclock.switch.bridging.interfaceRelay.selector typename "\"inet.linklayer.ethernet.common.RelayInterfaceSelector\""
+par gptp_withclock.switch.bridging.interfaceRelay.selector displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.bridging.interfaceRelay.selector macTableModule "\"gptp_withclock.switch.macTable\""
+par gptp_withclock.switch.bridging.interfaceRelay.selector interfaceTableModule "\"gptp_withclock.switch.interfaceTable\""
+par gptp_withclock.switch.bridging.interfaceRelay typename "\"inet.linklayer.ethernet.common.InterfaceRelayLayer\""
+par gptp_withclock.switch.bridging.interfaceRelay macTableModule "\"gptp_withclock.switch.macTable\""
+par gptp_withclock.switch.bridging.interfaceRelay interfaceTableModule "\"gptp_withclock.switch.interfaceTable\""
+par gptp_withclock.switch.bridging typename "\"inet.linklayer.ethernet.common.BridgingLayer\""
+par gptp_withclock.switch.bridging macTableModule "\"gptp_withclock.switch.macTable\""
+par gptp_withclock.switch.bridging interfaceTableModule "\"gptp_withclock.switch.interfaceTable\""
+par gptp_withclock.switch.bl typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.switch.bl displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.bl forwardServiceRegistration true
+par gptp_withclock.switch.bl forwardProtocolRegistration true
+par gptp_withclock.switch.ethernet.fcsInserter.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.ethernet.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.ethernet.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.ethernet.macHeaderChecker.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.ethernet.macHeaderInserter typename "\"inet.linklayer.ethernet.modular.EthernetMacHeaderInserter\""
+par gptp_withclock.switch.ethernet.macHeaderInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.ethernet.macHeaderInserter interfaceTableModule "\"gptp_withclock.switch.interfaceTable\""
+par gptp_withclock.switch.ethernet.paddingInserter typename "\"inet.protocolelement.common.PaddingInserter\""
+par gptp_withclock.switch.ethernet.paddingInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.ethernet.paddingInserter minLength 480b
+attr unit b
+par gptp_withclock.switch.ethernet.paddingInserter roundingLength 8b
+attr unit b
+par gptp_withclock.switch.ethernet.paddingInserter insertionPosition "\"back\""
+attr enum front,back
+par gptp_withclock.switch.ethernet.fcsInserter typename "\"inet.linklayer.ethernet.modular.EthernetFcsInserter\""
+par gptp_withclock.switch.ethernet.fcsInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.ethernet.fcsInserter fcsMode "\"declared\""
+attr enum disabled,declared,computed
+par gptp_withclock.switch.ethernet.macHeaderChecker typename "\"inet.linklayer.ethernet.modular.EthernetMacHeaderChecker\""
+par gptp_withclock.switch.ethernet.macHeaderChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.switch.ethernet.macHeaderChecker backpressure false
+par gptp_withclock.switch.ethernet.macHeaderChecker interfaceTableModule "\"gptp_withclock.switch.interfaceTable\""
+par gptp_withclock.switch.ethernet.macHeaderChecker promiscuous true
+par gptp_withclock.switch.ethernet.fcsChecker typename "\"inet.linklayer.ethernet.modular.EthernetFcsChecker\""
+par gptp_withclock.switch.ethernet.fcsChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.switch.ethernet.fcsChecker backpressure false
+par gptp_withclock.switch.ethernet.fcsChecker popFcs true
+par gptp_withclock.switch.ethernet.fcsChecker enabled true
+par gptp_withclock.switch.ethernet typename "\"inet.linklayer.ethernet.modular.EthernetLayer\""
+par gptp_withclock.switch.ethernet interfaceTableModule "\"gptp_withclock.switch.interfaceTable\""
+par gptp_withclock.switch.ethernet hasSocketSupport false
+par gptp_withclock.switch.ieee8021q.qTagHeaderInserter.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.ieee8021q.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.ieee8021q.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.ieee8021q.qTagHeaderChecker.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.ieee8021q.qTagHeaderInserter typename "\"inet.linklayer.ieee8021q.Ieee8021qTagEpdHeaderInserter\""
+par gptp_withclock.switch.ieee8021q.qTagHeaderInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.ieee8021q.qTagHeaderInserter vlanTagType "\"c\""
+attr enum c,s
+par gptp_withclock.switch.ieee8021q.qTagHeaderInserter nextProtocol "\"ethernetmac\""
+par gptp_withclock.switch.ieee8021q.qTagHeaderInserter defaultVlanId -1
+par gptp_withclock.switch.ieee8021q.qTagHeaderInserter defaultPcp -1
+par gptp_withclock.switch.ieee8021q.qTagHeaderInserter defaultUserPriority -1
+par gptp_withclock.switch.ieee8021q.qTagHeaderInserter defaultDropEligible -1
+par gptp_withclock.switch.ieee8021q.qTagHeaderChecker typename "\"inet.linklayer.ieee8021q.Ieee8021qTagEpdHeaderChecker\""
+par gptp_withclock.switch.ieee8021q.qTagHeaderChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.switch.ieee8021q.qTagHeaderChecker backpressure false
+par gptp_withclock.switch.ieee8021q.qTagHeaderChecker vlanTagType "\"c\""
+attr enum c,s
+par gptp_withclock.switch.ieee8021q.qTagHeaderChecker vlanIdFilter []
+attr mutable ""
+par gptp_withclock.switch.ieee8021q typename "\"inet.linklayer.ieee8021q.Ieee8021qProtocol\""
+par gptp_withclock.switch.ieee8021q vlanTagType "\"c\""
+par gptp_withclock.switch.ieee8021q hasSocketSupport false
+par gptp_withclock.switch.ieee8021r.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.ieee8021r.rTagHeaderInserter.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.ieee8021r.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.ieee8021r.rTagHeaderChecker.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.ieee8021r.rTagHeaderInserter typename "\"inet.linklayer.ieee8021r.Ieee8021rTagEpdHeaderInserter\""
+par gptp_withclock.switch.ieee8021r.rTagHeaderInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.ieee8021r.rTagHeaderInserter nextProtocol "\"ieee8021qctag\""
+par gptp_withclock.switch.ieee8021r.rTagHeaderChecker typename "\"inet.linklayer.ieee8021r.Ieee8021rTagEpdHeaderChecker\""
+par gptp_withclock.switch.ieee8021r.rTagHeaderChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.switch.ieee8021r.rTagHeaderChecker backpressure false
+par gptp_withclock.switch.ieee8021r typename "\"inet.linklayer.ieee8021r.Ieee8021rProtocol\""
+par gptp_withclock.switch.li typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.switch.li displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.li forwardServiceRegistration true
+par gptp_withclock.switch.li forwardProtocolRegistration true
+par gptp_withclock.switch.eth[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[0].phyLayer.lowerLayerOut.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[0].phys$i.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[0].processingDelayLayer.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[0].processingDelayLayer.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[0].processingDelayLayer.egress.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[0].processingDelayLayer.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[0].processingDelayLayer.ingress.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[0].processingDelayLayer.ingress typename "\"inet.queueing.common.PacketDelayer\""
+par gptp_withclock.switch.eth[0].processingDelayLayer.ingress displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[0].processingDelayLayer.ingress clockModule "\"\""
+par gptp_withclock.switch.eth[0].processingDelayLayer.ingress schedulingPriority 0
+par gptp_withclock.switch.eth[0].processingDelayLayer.ingress scheduleZeroDelay true
+par gptp_withclock.switch.eth[0].processingDelayLayer.ingress delay 0ns
+attr unit ns
+par gptp_withclock.switch.eth[0].processingDelayLayer.ingress jitter 0ns
+attr unit ns
+par gptp_withclock.switch.eth[0].processingDelayLayer.ingress interbuff_alpha 7.5
+par gptp_withclock.switch.eth[0].processingDelayLayer.ingress interbuff_beta 2130.43
+par gptp_withclock.switch.eth[0].processingDelayLayer.ingress threshold_pktsize 340
+par gptp_withclock.switch.eth[0].processingDelayLayer.ingress CT false
+par gptp_withclock.switch.eth[0].processingDelayLayer.ingress ENABLE false
+par gptp_withclock.switch.eth[0].processingDelayLayer.ingress bitrate "inf bps"
+attr unit bps
+par gptp_withclock.switch.eth[0].processingDelayLayer.egress typename "\"inet.queueing.common.PacketDelayer\""
+par gptp_withclock.switch.eth[0].processingDelayLayer.egress displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[0].processingDelayLayer.egress clockModule "\"\""
+par gptp_withclock.switch.eth[0].processingDelayLayer.egress schedulingPriority 0
+par gptp_withclock.switch.eth[0].processingDelayLayer.egress scheduleZeroDelay true
+par gptp_withclock.switch.eth[0].processingDelayLayer.egress delay 0ns
+attr unit ns
+par gptp_withclock.switch.eth[0].processingDelayLayer.egress jitter 0ns
+attr unit ns
+par gptp_withclock.switch.eth[0].processingDelayLayer.egress interbuff_alpha 7.5
+par gptp_withclock.switch.eth[0].processingDelayLayer.egress interbuff_beta 2130.43
+par gptp_withclock.switch.eth[0].processingDelayLayer.egress threshold_pktsize 340
+par gptp_withclock.switch.eth[0].processingDelayLayer.egress CT "hasCutthroughSwitching ? true : false"
+par gptp_withclock.switch.eth[0].processingDelayLayer.egress ENABLE true
+par gptp_withclock.switch.eth[0].processingDelayLayer.egress bitrate "inf bps"
+attr unit bps
+par gptp_withclock.switch.eth[0].processingDelayLayer typename "\"inet.protocolelement.processing.ProcessingDelayLayer\""
+par gptp_withclock.switch.eth[0].macLayer.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[0].macLayer.outboundEmitter.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[0].macLayer.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[0].macLayer.fcsChecker.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[0].macLayer.queue typename "\"inet.queueing.queue.PacketQueue\""
+par gptp_withclock.switch.eth[0].macLayer.queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par gptp_withclock.switch.eth[0].macLayer.queue packetCapacity -1
+par gptp_withclock.switch.eth[0].macLayer.queue dataCapacity -1b
+attr unit b
+par gptp_withclock.switch.eth[0].macLayer.queue dropperClass "\"\""
+par gptp_withclock.switch.eth[0].macLayer.queue comparatorClass "\"\""
+par gptp_withclock.switch.eth[0].macLayer.queue bufferModule "\"\""
+par gptp_withclock.switch.eth[0].macLayer.server typename "\"inet.queueing.server.InstantServer\""
+par gptp_withclock.switch.eth[0].macLayer.server displayStringTextFormat "\"served %p pk (%l)\""
+par gptp_withclock.switch.eth[0].macLayer.server serveSchedulingPriority 0
+par gptp_withclock.switch.eth[0].macLayer.outboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.switch.eth[0].macLayer.outboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[0].macLayer.outboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.switch.eth[0].macLayer.outboundEmitter direction "\"outbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.switch.eth[0].macLayer.outboundEmitter signalName "\"packetSentToLower\""
+par gptp_withclock.switch.eth[0].macLayer.fcsChecker typename "\"inet.linklayer.ethernet.modular.EthernetFcsChecker\""
+par gptp_withclock.switch.eth[0].macLayer.fcsChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.switch.eth[0].macLayer.fcsChecker backpressure false
+par gptp_withclock.switch.eth[0].macLayer.fcsChecker popFcs false
+par gptp_withclock.switch.eth[0].macLayer.fcsChecker enabled true
+par gptp_withclock.switch.eth[0].macLayer.inboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.switch.eth[0].macLayer.inboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[0].macLayer.inboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.switch.eth[0].macLayer.inboundEmitter direction "\"inbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.switch.eth[0].macLayer.inboundEmitter signalName "\"packetReceivedFromLower\""
+par gptp_withclock.switch.eth[0].macLayer typename "\"inet.linklayer.ethernet.modular.EthernetMacLayer\""
+par gptp_withclock.switch.eth[0].macLayer bitrate 1e+09bps
+attr unit bps
+par gptp_withclock.switch.eth[0].phyLayer.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[0].phyLayer.transmitter.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[0].phyLayer.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[0].phyLayer.phyHeaderChecker.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[0].phyLayer.phyHeaderInserter typename "\"inet.physicallayer.wired.ethernet.EthernetPhyHeaderInserter\""
+par gptp_withclock.switch.eth[0].phyLayer.phyHeaderInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[0].phyLayer.interFrameGapInserter typename "\"inet.protocolelement.common.InterpacketGapInserter\""
+par gptp_withclock.switch.eth[0].phyLayer.interFrameGapInserter displayStringTextFormat "\"delayed %p pk (%l)\\nifg: %g\""
+par gptp_withclock.switch.eth[0].phyLayer.interFrameGapInserter clockModule "\"\""
+par gptp_withclock.switch.eth[0].phyLayer.interFrameGapInserter initialChannelBusy false
+par gptp_withclock.switch.eth[0].phyLayer.interFrameGapInserter duration 96s/dropUnit(parent.bitrate)
+attr unit s
+par gptp_withclock.switch.eth[0].phyLayer.outboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.switch.eth[0].phyLayer.outboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[0].phyLayer.outboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.switch.eth[0].phyLayer.outboundEmitter direction "\"outbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.switch.eth[0].phyLayer.outboundEmitter signalName "\"packetSentToLower\""
+par gptp_withclock.switch.eth[0].phyLayer.transmitter typename "\"inet.protocolelement.transceiver.PacketTransmitter\""
+par gptp_withclock.switch.eth[0].phyLayer.transmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[0].phyLayer.transmitter clockModule "\"\""
+par gptp_withclock.switch.eth[0].phyLayer.transmitter datarate this.bitrate
+attr unit bps
+par gptp_withclock.switch.eth[0].phyLayer.transmitter timestamping false
+par gptp_withclock.switch.eth[0].phyLayer.transmitter ts_offset 0
+par gptp_withclock.switch.eth[0].phyLayer.transmitter ts_packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.switch.eth[0].phyLayer.phyHeaderChecker typename "\"inet.physicallayer.wired.ethernet.EthernetPhyHeaderChecker\""
+par gptp_withclock.switch.eth[0].phyLayer.phyHeaderChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.switch.eth[0].phyLayer.phyHeaderChecker backpressure false
+par gptp_withclock.switch.eth[0].phyLayer.inboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.switch.eth[0].phyLayer.inboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[0].phyLayer.inboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.switch.eth[0].phyLayer.inboundEmitter direction "\"inbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.switch.eth[0].phyLayer.inboundEmitter signalName "\"packetReceivedFromLower\""
+par gptp_withclock.switch.eth[0].phyLayer.receiver typename "\"inet.protocolelement.transceiver.PacketReceiver\""
+par gptp_withclock.switch.eth[0].phyLayer.receiver displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[0].phyLayer.receiver datarate 1e+09bps
+attr unit bps
+par gptp_withclock.switch.eth[0].phyLayer.receiver timestamping false
+par gptp_withclock.switch.eth[0].phyLayer.receiver ts_offset 0
+par gptp_withclock.switch.eth[0].phyLayer.receiver linerate 1e+09
+par gptp_withclock.switch.eth[0].phyLayer.receiver ts_packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.switch.eth[0].phyLayer typename "\"inet.physicallayer.wired.ethernet.EthernetPhyLayer\""
+par gptp_withclock.switch.eth[0].phyLayer bitrate this.bitrate
+attr unit bps
+par gptp_withclock.switch.eth[0] typename "\"inet.linklayer.ethernet.LayeredEthernetInterface\""
+par gptp_withclock.switch.eth[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par gptp_withclock.switch.eth[0] recordPcap false
+par gptp_withclock.switch.eth[0] numPcapRecorders 0
+par gptp_withclock.switch.eth[0] protocol "\"ethernetmac\""
+par gptp_withclock.switch.eth[0] broadcast true
+par gptp_withclock.switch.eth[0] multicast true
+par gptp_withclock.switch.eth[0] address "\"0A-AA-00-00-00-01\""
+attr mutable ""
+par gptp_withclock.switch.eth[0] bitrate 1e+09bps
+attr unit bps
+par gptp_withclock.switch.eth[0] mtu 1500B
+attr unit B
+par gptp_withclock.switch.eth[0] interfaceTableModule "\"gptp_withclock.switch.interfaceTable\""
+par gptp_withclock.switch.eth[1].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[1].phyLayer.lowerLayerOut.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[1].phys$i.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[1].processingDelayLayer.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[1].processingDelayLayer.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[1].processingDelayLayer.egress.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[1].processingDelayLayer.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[1].processingDelayLayer.ingress.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[1].processingDelayLayer.ingress typename "\"inet.queueing.common.PacketDelayer\""
+par gptp_withclock.switch.eth[1].processingDelayLayer.ingress displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[1].processingDelayLayer.ingress clockModule "\"\""
+par gptp_withclock.switch.eth[1].processingDelayLayer.ingress schedulingPriority 0
+par gptp_withclock.switch.eth[1].processingDelayLayer.ingress scheduleZeroDelay true
+par gptp_withclock.switch.eth[1].processingDelayLayer.ingress delay 0ns
+attr unit ns
+par gptp_withclock.switch.eth[1].processingDelayLayer.ingress jitter 0ns
+attr unit ns
+par gptp_withclock.switch.eth[1].processingDelayLayer.ingress interbuff_alpha 7.5
+par gptp_withclock.switch.eth[1].processingDelayLayer.ingress interbuff_beta 2130.43
+par gptp_withclock.switch.eth[1].processingDelayLayer.ingress threshold_pktsize 340
+par gptp_withclock.switch.eth[1].processingDelayLayer.ingress CT false
+par gptp_withclock.switch.eth[1].processingDelayLayer.ingress ENABLE false
+par gptp_withclock.switch.eth[1].processingDelayLayer.ingress bitrate "inf bps"
+attr unit bps
+par gptp_withclock.switch.eth[1].processingDelayLayer.egress typename "\"inet.queueing.common.PacketDelayer\""
+par gptp_withclock.switch.eth[1].processingDelayLayer.egress displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[1].processingDelayLayer.egress clockModule "\"\""
+par gptp_withclock.switch.eth[1].processingDelayLayer.egress schedulingPriority 0
+par gptp_withclock.switch.eth[1].processingDelayLayer.egress scheduleZeroDelay true
+par gptp_withclock.switch.eth[1].processingDelayLayer.egress delay 0ns
+attr unit ns
+par gptp_withclock.switch.eth[1].processingDelayLayer.egress jitter 0ns
+attr unit ns
+par gptp_withclock.switch.eth[1].processingDelayLayer.egress interbuff_alpha 7.5
+par gptp_withclock.switch.eth[1].processingDelayLayer.egress interbuff_beta 2130.43
+par gptp_withclock.switch.eth[1].processingDelayLayer.egress threshold_pktsize 340
+par gptp_withclock.switch.eth[1].processingDelayLayer.egress CT "hasCutthroughSwitching ? true : false"
+par gptp_withclock.switch.eth[1].processingDelayLayer.egress ENABLE true
+par gptp_withclock.switch.eth[1].processingDelayLayer.egress bitrate "inf bps"
+attr unit bps
+par gptp_withclock.switch.eth[1].processingDelayLayer typename "\"inet.protocolelement.processing.ProcessingDelayLayer\""
+par gptp_withclock.switch.eth[1].macLayer.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[1].macLayer.outboundEmitter.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[1].macLayer.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[1].macLayer.fcsChecker.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[1].macLayer.queue typename "\"inet.queueing.queue.PacketQueue\""
+par gptp_withclock.switch.eth[1].macLayer.queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par gptp_withclock.switch.eth[1].macLayer.queue packetCapacity -1
+par gptp_withclock.switch.eth[1].macLayer.queue dataCapacity -1b
+attr unit b
+par gptp_withclock.switch.eth[1].macLayer.queue dropperClass "\"\""
+par gptp_withclock.switch.eth[1].macLayer.queue comparatorClass "\"\""
+par gptp_withclock.switch.eth[1].macLayer.queue bufferModule "\"\""
+par gptp_withclock.switch.eth[1].macLayer.server typename "\"inet.queueing.server.InstantServer\""
+par gptp_withclock.switch.eth[1].macLayer.server displayStringTextFormat "\"served %p pk (%l)\""
+par gptp_withclock.switch.eth[1].macLayer.server serveSchedulingPriority 0
+par gptp_withclock.switch.eth[1].macLayer.outboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.switch.eth[1].macLayer.outboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[1].macLayer.outboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.switch.eth[1].macLayer.outboundEmitter direction "\"outbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.switch.eth[1].macLayer.outboundEmitter signalName "\"packetSentToLower\""
+par gptp_withclock.switch.eth[1].macLayer.fcsChecker typename "\"inet.linklayer.ethernet.modular.EthernetFcsChecker\""
+par gptp_withclock.switch.eth[1].macLayer.fcsChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.switch.eth[1].macLayer.fcsChecker backpressure false
+par gptp_withclock.switch.eth[1].macLayer.fcsChecker popFcs false
+par gptp_withclock.switch.eth[1].macLayer.fcsChecker enabled true
+par gptp_withclock.switch.eth[1].macLayer.inboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.switch.eth[1].macLayer.inboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[1].macLayer.inboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.switch.eth[1].macLayer.inboundEmitter direction "\"inbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.switch.eth[1].macLayer.inboundEmitter signalName "\"packetReceivedFromLower\""
+par gptp_withclock.switch.eth[1].macLayer typename "\"inet.linklayer.ethernet.modular.EthernetMacLayer\""
+par gptp_withclock.switch.eth[1].macLayer bitrate 1e+09bps
+attr unit bps
+par gptp_withclock.switch.eth[1].phyLayer.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[1].phyLayer.transmitter.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[1].phyLayer.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[1].phyLayer.phyHeaderChecker.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[1].phyLayer.phyHeaderInserter typename "\"inet.physicallayer.wired.ethernet.EthernetPhyHeaderInserter\""
+par gptp_withclock.switch.eth[1].phyLayer.phyHeaderInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[1].phyLayer.interFrameGapInserter typename "\"inet.protocolelement.common.InterpacketGapInserter\""
+par gptp_withclock.switch.eth[1].phyLayer.interFrameGapInserter displayStringTextFormat "\"delayed %p pk (%l)\\nifg: %g\""
+par gptp_withclock.switch.eth[1].phyLayer.interFrameGapInserter clockModule "\"\""
+par gptp_withclock.switch.eth[1].phyLayer.interFrameGapInserter initialChannelBusy false
+par gptp_withclock.switch.eth[1].phyLayer.interFrameGapInserter duration 96s/dropUnit(parent.bitrate)
+attr unit s
+par gptp_withclock.switch.eth[1].phyLayer.outboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.switch.eth[1].phyLayer.outboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[1].phyLayer.outboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.switch.eth[1].phyLayer.outboundEmitter direction "\"outbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.switch.eth[1].phyLayer.outboundEmitter signalName "\"packetSentToLower\""
+par gptp_withclock.switch.eth[1].phyLayer.transmitter typename "\"inet.protocolelement.transceiver.PacketTransmitter\""
+par gptp_withclock.switch.eth[1].phyLayer.transmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[1].phyLayer.transmitter clockModule "\"\""
+par gptp_withclock.switch.eth[1].phyLayer.transmitter datarate this.bitrate
+attr unit bps
+par gptp_withclock.switch.eth[1].phyLayer.transmitter timestamping false
+par gptp_withclock.switch.eth[1].phyLayer.transmitter ts_offset 0
+par gptp_withclock.switch.eth[1].phyLayer.transmitter ts_packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.switch.eth[1].phyLayer.phyHeaderChecker typename "\"inet.physicallayer.wired.ethernet.EthernetPhyHeaderChecker\""
+par gptp_withclock.switch.eth[1].phyLayer.phyHeaderChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.switch.eth[1].phyLayer.phyHeaderChecker backpressure false
+par gptp_withclock.switch.eth[1].phyLayer.inboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.switch.eth[1].phyLayer.inboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[1].phyLayer.inboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.switch.eth[1].phyLayer.inboundEmitter direction "\"inbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.switch.eth[1].phyLayer.inboundEmitter signalName "\"packetReceivedFromLower\""
+par gptp_withclock.switch.eth[1].phyLayer.receiver typename "\"inet.protocolelement.transceiver.PacketReceiver\""
+par gptp_withclock.switch.eth[1].phyLayer.receiver displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[1].phyLayer.receiver datarate 1e+09bps
+attr unit bps
+par gptp_withclock.switch.eth[1].phyLayer.receiver timestamping false
+par gptp_withclock.switch.eth[1].phyLayer.receiver ts_offset 0
+par gptp_withclock.switch.eth[1].phyLayer.receiver linerate 1e+09
+par gptp_withclock.switch.eth[1].phyLayer.receiver ts_packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.switch.eth[1].phyLayer typename "\"inet.physicallayer.wired.ethernet.EthernetPhyLayer\""
+par gptp_withclock.switch.eth[1].phyLayer bitrate this.bitrate
+attr unit bps
+par gptp_withclock.switch.eth[1] typename "\"inet.linklayer.ethernet.LayeredEthernetInterface\""
+par gptp_withclock.switch.eth[1] displayStringTextFormat "\"%a (%i)\\n%m\""
+par gptp_withclock.switch.eth[1] recordPcap false
+par gptp_withclock.switch.eth[1] numPcapRecorders 0
+par gptp_withclock.switch.eth[1] protocol "\"ethernetmac\""
+par gptp_withclock.switch.eth[1] broadcast true
+par gptp_withclock.switch.eth[1] multicast true
+par gptp_withclock.switch.eth[1] address "\"0A-AA-00-00-00-02\""
+attr mutable ""
+par gptp_withclock.switch.eth[1] bitrate 1e+09bps
+attr unit bps
+par gptp_withclock.switch.eth[1] mtu 1500B
+attr unit B
+par gptp_withclock.switch.eth[1] interfaceTableModule "\"gptp_withclock.switch.interfaceTable\""
+par gptp_withclock.switch.eth[2].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[2].phyLayer.lowerLayerOut.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[2].phys$i.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[2].processingDelayLayer.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[2].processingDelayLayer.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[2].processingDelayLayer.egress.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[2].processingDelayLayer.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[2].processingDelayLayer.ingress.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[2].processingDelayLayer.ingress typename "\"inet.queueing.common.PacketDelayer\""
+par gptp_withclock.switch.eth[2].processingDelayLayer.ingress displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[2].processingDelayLayer.ingress clockModule "\"\""
+par gptp_withclock.switch.eth[2].processingDelayLayer.ingress schedulingPriority 0
+par gptp_withclock.switch.eth[2].processingDelayLayer.ingress scheduleZeroDelay true
+par gptp_withclock.switch.eth[2].processingDelayLayer.ingress delay 0ns
+attr unit ns
+par gptp_withclock.switch.eth[2].processingDelayLayer.ingress jitter 0ns
+attr unit ns
+par gptp_withclock.switch.eth[2].processingDelayLayer.ingress interbuff_alpha 7.5
+par gptp_withclock.switch.eth[2].processingDelayLayer.ingress interbuff_beta 2130.43
+par gptp_withclock.switch.eth[2].processingDelayLayer.ingress threshold_pktsize 340
+par gptp_withclock.switch.eth[2].processingDelayLayer.ingress CT false
+par gptp_withclock.switch.eth[2].processingDelayLayer.ingress ENABLE false
+par gptp_withclock.switch.eth[2].processingDelayLayer.ingress bitrate "inf bps"
+attr unit bps
+par gptp_withclock.switch.eth[2].processingDelayLayer.egress typename "\"inet.queueing.common.PacketDelayer\""
+par gptp_withclock.switch.eth[2].processingDelayLayer.egress displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[2].processingDelayLayer.egress clockModule "\"\""
+par gptp_withclock.switch.eth[2].processingDelayLayer.egress schedulingPriority 0
+par gptp_withclock.switch.eth[2].processingDelayLayer.egress scheduleZeroDelay true
+par gptp_withclock.switch.eth[2].processingDelayLayer.egress delay 0ns
+attr unit ns
+par gptp_withclock.switch.eth[2].processingDelayLayer.egress jitter 0ns
+attr unit ns
+par gptp_withclock.switch.eth[2].processingDelayLayer.egress interbuff_alpha 7.5
+par gptp_withclock.switch.eth[2].processingDelayLayer.egress interbuff_beta 2130.43
+par gptp_withclock.switch.eth[2].processingDelayLayer.egress threshold_pktsize 340
+par gptp_withclock.switch.eth[2].processingDelayLayer.egress CT "hasCutthroughSwitching ? true : false"
+par gptp_withclock.switch.eth[2].processingDelayLayer.egress ENABLE true
+par gptp_withclock.switch.eth[2].processingDelayLayer.egress bitrate "inf bps"
+attr unit bps
+par gptp_withclock.switch.eth[2].processingDelayLayer typename "\"inet.protocolelement.processing.ProcessingDelayLayer\""
+par gptp_withclock.switch.eth[2].macLayer.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[2].macLayer.outboundEmitter.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[2].macLayer.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[2].macLayer.fcsChecker.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[2].macLayer.queue typename "\"inet.queueing.queue.PacketQueue\""
+par gptp_withclock.switch.eth[2].macLayer.queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par gptp_withclock.switch.eth[2].macLayer.queue packetCapacity -1
+par gptp_withclock.switch.eth[2].macLayer.queue dataCapacity -1b
+attr unit b
+par gptp_withclock.switch.eth[2].macLayer.queue dropperClass "\"\""
+par gptp_withclock.switch.eth[2].macLayer.queue comparatorClass "\"\""
+par gptp_withclock.switch.eth[2].macLayer.queue bufferModule "\"\""
+par gptp_withclock.switch.eth[2].macLayer.server typename "\"inet.queueing.server.InstantServer\""
+par gptp_withclock.switch.eth[2].macLayer.server displayStringTextFormat "\"served %p pk (%l)\""
+par gptp_withclock.switch.eth[2].macLayer.server serveSchedulingPriority 0
+par gptp_withclock.switch.eth[2].macLayer.outboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.switch.eth[2].macLayer.outboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[2].macLayer.outboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.switch.eth[2].macLayer.outboundEmitter direction "\"outbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.switch.eth[2].macLayer.outboundEmitter signalName "\"packetSentToLower\""
+par gptp_withclock.switch.eth[2].macLayer.fcsChecker typename "\"inet.linklayer.ethernet.modular.EthernetFcsChecker\""
+par gptp_withclock.switch.eth[2].macLayer.fcsChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.switch.eth[2].macLayer.fcsChecker backpressure false
+par gptp_withclock.switch.eth[2].macLayer.fcsChecker popFcs false
+par gptp_withclock.switch.eth[2].macLayer.fcsChecker enabled true
+par gptp_withclock.switch.eth[2].macLayer.inboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.switch.eth[2].macLayer.inboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[2].macLayer.inboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.switch.eth[2].macLayer.inboundEmitter direction "\"inbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.switch.eth[2].macLayer.inboundEmitter signalName "\"packetReceivedFromLower\""
+par gptp_withclock.switch.eth[2].macLayer typename "\"inet.linklayer.ethernet.modular.EthernetMacLayer\""
+par gptp_withclock.switch.eth[2].macLayer bitrate 1e+09bps
+attr unit bps
+par gptp_withclock.switch.eth[2].phyLayer.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[2].phyLayer.transmitter.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[2].phyLayer.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[2].phyLayer.phyHeaderChecker.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.switch.eth[2].phyLayer.phyHeaderInserter typename "\"inet.physicallayer.wired.ethernet.EthernetPhyHeaderInserter\""
+par gptp_withclock.switch.eth[2].phyLayer.phyHeaderInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[2].phyLayer.interFrameGapInserter typename "\"inet.protocolelement.common.InterpacketGapInserter\""
+par gptp_withclock.switch.eth[2].phyLayer.interFrameGapInserter displayStringTextFormat "\"delayed %p pk (%l)\\nifg: %g\""
+par gptp_withclock.switch.eth[2].phyLayer.interFrameGapInserter clockModule "\"\""
+par gptp_withclock.switch.eth[2].phyLayer.interFrameGapInserter initialChannelBusy false
+par gptp_withclock.switch.eth[2].phyLayer.interFrameGapInserter duration 96s/dropUnit(parent.bitrate)
+attr unit s
+par gptp_withclock.switch.eth[2].phyLayer.outboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.switch.eth[2].phyLayer.outboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[2].phyLayer.outboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.switch.eth[2].phyLayer.outboundEmitter direction "\"outbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.switch.eth[2].phyLayer.outboundEmitter signalName "\"packetSentToLower\""
+par gptp_withclock.switch.eth[2].phyLayer.transmitter typename "\"inet.protocolelement.transceiver.PacketTransmitter\""
+par gptp_withclock.switch.eth[2].phyLayer.transmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[2].phyLayer.transmitter clockModule "\"\""
+par gptp_withclock.switch.eth[2].phyLayer.transmitter datarate this.bitrate
+attr unit bps
+par gptp_withclock.switch.eth[2].phyLayer.transmitter timestamping false
+par gptp_withclock.switch.eth[2].phyLayer.transmitter ts_offset 0
+par gptp_withclock.switch.eth[2].phyLayer.transmitter ts_packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.switch.eth[2].phyLayer.phyHeaderChecker typename "\"inet.physicallayer.wired.ethernet.EthernetPhyHeaderChecker\""
+par gptp_withclock.switch.eth[2].phyLayer.phyHeaderChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.switch.eth[2].phyLayer.phyHeaderChecker backpressure false
+par gptp_withclock.switch.eth[2].phyLayer.inboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.switch.eth[2].phyLayer.inboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[2].phyLayer.inboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.switch.eth[2].phyLayer.inboundEmitter direction "\"inbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.switch.eth[2].phyLayer.inboundEmitter signalName "\"packetReceivedFromLower\""
+par gptp_withclock.switch.eth[2].phyLayer.receiver typename "\"inet.protocolelement.transceiver.PacketReceiver\""
+par gptp_withclock.switch.eth[2].phyLayer.receiver displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.switch.eth[2].phyLayer.receiver datarate 1e+09bps
+attr unit bps
+par gptp_withclock.switch.eth[2].phyLayer.receiver timestamping false
+par gptp_withclock.switch.eth[2].phyLayer.receiver ts_offset 0
+par gptp_withclock.switch.eth[2].phyLayer.receiver linerate 1e+09
+par gptp_withclock.switch.eth[2].phyLayer.receiver ts_packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.switch.eth[2].phyLayer typename "\"inet.physicallayer.wired.ethernet.EthernetPhyLayer\""
+par gptp_withclock.switch.eth[2].phyLayer bitrate this.bitrate
+attr unit bps
+par gptp_withclock.switch.eth[2] typename "\"inet.linklayer.ethernet.LayeredEthernetInterface\""
+par gptp_withclock.switch.eth[2] displayStringTextFormat "\"%a (%i)\\n%m\""
+par gptp_withclock.switch.eth[2] recordPcap false
+par gptp_withclock.switch.eth[2] numPcapRecorders 0
+par gptp_withclock.switch.eth[2] protocol "\"ethernetmac\""
+par gptp_withclock.switch.eth[2] broadcast true
+par gptp_withclock.switch.eth[2] multicast true
+par gptp_withclock.switch.eth[2] address "\"0A-AA-00-00-00-03\""
+attr mutable ""
+par gptp_withclock.switch.eth[2] bitrate 1e+09bps
+attr unit bps
+par gptp_withclock.switch.eth[2] mtu 1500B
+attr unit B
+par gptp_withclock.switch.eth[2] interfaceTableModule "\"gptp_withclock.switch.interfaceTable\""
+par gptp_withclock.switch typename "\"inet.node.tsn.TsnSwitch\""
+par gptp_withclock.switch recordPcap false
+par gptp_withclock.switch numPcapRecorders 0
+par gptp_withclock.switch numApps 0
+par gptp_withclock.switch hasStatus false
+par gptp_withclock.switch hasStp false
+par gptp_withclock.switch hasGptp true
+par gptp_withclock.switch hasCutthroughSwitching false
+par gptp_withclock.switch fcsMode "\"declared\""
+attr enum declared,computed
+par gptp_withclock.switch spanningTreeProtocol "\"Stp\""
+par gptp_withclock.switch numEthInterfaces 0
+par gptp_withclock.switch hasTimeSynchronization false
+par gptp_withclock.switch hasIngressTrafficFiltering false
+par gptp_withclock.switch hasEgressTrafficShaping false
+par gptp_withclock.switch hasStreamRedundancy false
+par gptp_withclock.switch hasIncomingStreams false
+par gptp_withclock.switch hasOutgoingStreams false
+par gptp_withclock.switch hasFramePreemption false
+par gptp_withclock.server.ethg$i[0].channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.eth[0].phys$o.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par gptp_withclock.server.interfaceTable displayAddresses false
+par gptp_withclock.server.cb typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.server.cb displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.cb forwardServiceRegistration true
+par gptp_withclock.server.cb forwardProtocolRegistration true
+par gptp_withclock.server.bl typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.server.bl displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.bl forwardServiceRegistration true
+par gptp_withclock.server.bl forwardProtocolRegistration true
+par gptp_withclock.server.ethernet.fcsInserter.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.ethernet.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.ethernet.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.ethernet.macHeaderChecker.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.ethernet.macHeaderInserter typename "\"inet.linklayer.ethernet.modular.EthernetMacHeaderInserter\""
+par gptp_withclock.server.ethernet.macHeaderInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.ethernet.macHeaderInserter interfaceTableModule "\"gptp_withclock.server.interfaceTable\""
+par gptp_withclock.server.ethernet.paddingInserter typename "\"inet.protocolelement.common.PaddingInserter\""
+par gptp_withclock.server.ethernet.paddingInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.ethernet.paddingInserter minLength 480b
+attr unit b
+par gptp_withclock.server.ethernet.paddingInserter roundingLength 8b
+attr unit b
+par gptp_withclock.server.ethernet.paddingInserter insertionPosition "\"back\""
+attr enum front,back
+par gptp_withclock.server.ethernet.fcsInserter typename "\"inet.linklayer.ethernet.modular.EthernetFcsInserter\""
+par gptp_withclock.server.ethernet.fcsInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.ethernet.fcsInserter fcsMode "\"declared\""
+attr enum disabled,declared,computed
+par gptp_withclock.server.ethernet.macHeaderChecker typename "\"inet.linklayer.ethernet.modular.EthernetMacHeaderChecker\""
+par gptp_withclock.server.ethernet.macHeaderChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.server.ethernet.macHeaderChecker backpressure false
+par gptp_withclock.server.ethernet.macHeaderChecker interfaceTableModule "\"gptp_withclock.server.interfaceTable\""
+par gptp_withclock.server.ethernet.macHeaderChecker promiscuous false
+par gptp_withclock.server.ethernet.fcsChecker typename "\"inet.linklayer.ethernet.modular.EthernetFcsChecker\""
+par gptp_withclock.server.ethernet.fcsChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.server.ethernet.fcsChecker backpressure false
+par gptp_withclock.server.ethernet.fcsChecker popFcs true
+par gptp_withclock.server.ethernet.fcsChecker enabled true
+par gptp_withclock.server.ethernet typename "\"inet.linklayer.ethernet.modular.EthernetLayer\""
+par gptp_withclock.server.ethernet interfaceTableModule "\"gptp_withclock.server.interfaceTable\""
+par gptp_withclock.server.ethernet hasSocketSupport false
+par gptp_withclock.server.li typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.server.li displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.li forwardServiceRegistration true
+par gptp_withclock.server.li forwardProtocolRegistration true
+par gptp_withclock.server.lo[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.lo[0].lo.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.lo[0].lo typename "\"inet.linklayer.loopback.Loopback\""
+par gptp_withclock.server.lo[0].lo interfaceTableModule "\"gptp_withclock.server.interfaceTable\""
+par gptp_withclock.server.lo[0].lo mtu 4470B
+attr unit B
+par gptp_withclock.server.lo[0] typename "\"inet.linklayer.loopback.LoopbackInterface\""
+par gptp_withclock.server.lo[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par gptp_withclock.server.lo[0] recordPcap false
+par gptp_withclock.server.lo[0] numPcapRecorders 0
+par gptp_withclock.server.lo[0] interfaceTableModule "\"gptp_withclock.server.interfaceTable\""
+par gptp_withclock.server.eth[0].phyLayer.lowerLayerOut.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.eth[0].phys$i.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.eth[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.eth[0].macLayer.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.eth[0].macLayer.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.eth[0].macLayer.outboundEmitter.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.eth[0].macLayer.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.eth[0].macLayer.fcsChecker.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.eth[0].macLayer.queue typename "\"inet.queueing.queue.PacketQueue\""
+par gptp_withclock.server.eth[0].macLayer.queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par gptp_withclock.server.eth[0].macLayer.queue packetCapacity -1
+par gptp_withclock.server.eth[0].macLayer.queue dataCapacity -1b
+attr unit b
+par gptp_withclock.server.eth[0].macLayer.queue dropperClass "\"\""
+par gptp_withclock.server.eth[0].macLayer.queue comparatorClass "\"\""
+par gptp_withclock.server.eth[0].macLayer.queue bufferModule "\"\""
+par gptp_withclock.server.eth[0].macLayer.server typename "\"inet.queueing.server.InstantServer\""
+par gptp_withclock.server.eth[0].macLayer.server displayStringTextFormat "\"served %p pk (%l)\""
+par gptp_withclock.server.eth[0].macLayer.server serveSchedulingPriority 0
+par gptp_withclock.server.eth[0].macLayer.outboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.server.eth[0].macLayer.outboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.eth[0].macLayer.outboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.server.eth[0].macLayer.outboundEmitter direction "\"outbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.server.eth[0].macLayer.outboundEmitter signalName "\"packetSentToLower\""
+par gptp_withclock.server.eth[0].macLayer.fcsChecker typename "\"inet.linklayer.ethernet.modular.EthernetFcsChecker\""
+par gptp_withclock.server.eth[0].macLayer.fcsChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.server.eth[0].macLayer.fcsChecker backpressure false
+par gptp_withclock.server.eth[0].macLayer.fcsChecker popFcs false
+par gptp_withclock.server.eth[0].macLayer.fcsChecker enabled true
+par gptp_withclock.server.eth[0].macLayer.inboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.server.eth[0].macLayer.inboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.eth[0].macLayer.inboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.server.eth[0].macLayer.inboundEmitter direction "\"inbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.server.eth[0].macLayer.inboundEmitter signalName "\"packetReceivedFromLower\""
+par gptp_withclock.server.eth[0].macLayer typename "\"inet.linklayer.ethernet.modular.EthernetMacLayer\""
+par gptp_withclock.server.eth[0].macLayer bitrate 1e+09bps
+attr unit bps
+par gptp_withclock.server.eth[0].phyLayer.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.eth[0].phyLayer.transmitter.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.eth[0].phyLayer.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.eth[0].phyLayer.phyHeaderChecker.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.eth[0].phyLayer.phyHeaderInserter typename "\"inet.physicallayer.wired.ethernet.EthernetPhyHeaderInserter\""
+par gptp_withclock.server.eth[0].phyLayer.phyHeaderInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.eth[0].phyLayer.interFrameGapInserter typename "\"inet.protocolelement.common.InterpacketGapInserter\""
+par gptp_withclock.server.eth[0].phyLayer.interFrameGapInserter displayStringTextFormat "\"delayed %p pk (%l)\\nifg: %g\""
+par gptp_withclock.server.eth[0].phyLayer.interFrameGapInserter clockModule "\"\""
+par gptp_withclock.server.eth[0].phyLayer.interFrameGapInserter initialChannelBusy false
+par gptp_withclock.server.eth[0].phyLayer.interFrameGapInserter duration 96s/dropUnit(parent.bitrate)
+attr unit s
+par gptp_withclock.server.eth[0].phyLayer.outboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.server.eth[0].phyLayer.outboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.eth[0].phyLayer.outboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.server.eth[0].phyLayer.outboundEmitter direction "\"outbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.server.eth[0].phyLayer.outboundEmitter signalName "\"packetSentToLower\""
+par gptp_withclock.server.eth[0].phyLayer.transmitter typename "\"inet.protocolelement.transceiver.PacketTransmitter\""
+par gptp_withclock.server.eth[0].phyLayer.transmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.eth[0].phyLayer.transmitter clockModule "\"\""
+par gptp_withclock.server.eth[0].phyLayer.transmitter datarate this.bitrate
+attr unit bps
+par gptp_withclock.server.eth[0].phyLayer.transmitter timestamping false
+par gptp_withclock.server.eth[0].phyLayer.transmitter ts_offset 0
+par gptp_withclock.server.eth[0].phyLayer.transmitter ts_packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.server.eth[0].phyLayer.phyHeaderChecker typename "\"inet.physicallayer.wired.ethernet.EthernetPhyHeaderChecker\""
+par gptp_withclock.server.eth[0].phyLayer.phyHeaderChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.server.eth[0].phyLayer.phyHeaderChecker backpressure false
+par gptp_withclock.server.eth[0].phyLayer.inboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.server.eth[0].phyLayer.inboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.eth[0].phyLayer.inboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.server.eth[0].phyLayer.inboundEmitter direction "\"inbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.server.eth[0].phyLayer.inboundEmitter signalName "\"packetReceivedFromLower\""
+par gptp_withclock.server.eth[0].phyLayer.receiver typename "\"inet.protocolelement.transceiver.PacketReceiver\""
+par gptp_withclock.server.eth[0].phyLayer.receiver displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.eth[0].phyLayer.receiver datarate 1e+09bps
+attr unit bps
+par gptp_withclock.server.eth[0].phyLayer.receiver timestamping false
+par gptp_withclock.server.eth[0].phyLayer.receiver ts_offset 0
+par gptp_withclock.server.eth[0].phyLayer.receiver linerate 1e+09
+par gptp_withclock.server.eth[0].phyLayer.receiver ts_packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.server.eth[0].phyLayer typename "\"inet.physicallayer.wired.ethernet.EthernetPhyLayer\""
+par gptp_withclock.server.eth[0].phyLayer bitrate this.bitrate
+attr unit bps
+par gptp_withclock.server.eth[0] typename "\"inet.linklayer.ethernet.LayeredEthernetInterface\""
+par gptp_withclock.server.eth[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par gptp_withclock.server.eth[0] recordPcap false
+par gptp_withclock.server.eth[0] numPcapRecorders 0
+par gptp_withclock.server.eth[0] protocol "\"ethernetmac\""
+par gptp_withclock.server.eth[0] broadcast true
+par gptp_withclock.server.eth[0] multicast true
+par gptp_withclock.server.eth[0] address "\"0A-AA-00-00-00-04\""
+attr mutable ""
+par gptp_withclock.server.eth[0] bitrate 1e+09bps
+attr unit bps
+par gptp_withclock.server.eth[0] mtu 1500B
+attr unit B
+par gptp_withclock.server.eth[0] interfaceTableModule "\"gptp_withclock.server.interfaceTable\""
+par gptp_withclock.server.ipv4.transportIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.ipv4.up.out[0].channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.ipv4.lp.out[2].channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.ipv4.ifIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.server.ipv4.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NodeConfigurator\""
+par gptp_withclock.server.ipv4.configurator interfaceTableModule "\"gptp_withclock.server.interfaceTable\""
+par gptp_withclock.server.ipv4.configurator routingTableModule "\"gptp_withclock.server.ipv4.routingTable\""
+par gptp_withclock.server.ipv4.configurator networkConfiguratorModule "\"configurator\""
+par gptp_withclock.server.ipv4.configurator configureRoutingTable true
+par gptp_withclock.server.ipv4.routingTable typename "\"inet.networklayer.ipv4.Ipv4RoutingTable\""
+par gptp_withclock.server.ipv4.routingTable interfaceTableModule "\"gptp_withclock.server.interfaceTable\""
+par gptp_withclock.server.ipv4.routingTable routerId "\"auto\""
+par gptp_withclock.server.ipv4.routingTable netmaskRoutes "\"*\""
+par gptp_withclock.server.ipv4.routingTable forwarding false
+par gptp_withclock.server.ipv4.routingTable multicastForwarding false
+par gptp_withclock.server.ipv4.routingTable useAdminDist false
+par gptp_withclock.server.ipv4.routingTable routingFile "\"\""
+par gptp_withclock.server.ipv4.natTable typename "\"inet.networklayer.ipv4.Ipv4NatTable\""
+par gptp_withclock.server.ipv4.natTable networkProtocolModule "\"^.ip\""
+par gptp_withclock.server.ipv4.natTable config "<config/> at content:1"
+par gptp_withclock.server.ipv4.up typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.server.ipv4.up displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.ipv4.up forwardServiceRegistration true
+par gptp_withclock.server.ipv4.up forwardProtocolRegistration true
+par gptp_withclock.server.ipv4.igmp typename "\"inet.networklayer.ipv4.Igmpv2\""
+par gptp_withclock.server.ipv4.igmp interfaceTableModule "\"gptp_withclock.server.interfaceTable\""
+par gptp_withclock.server.ipv4.igmp routingTableModule "\"gptp_withclock.server.ipv4.routingTable\""
+par gptp_withclock.server.ipv4.igmp crcMode "\"declared\""
+attr enum declared,computed
+par gptp_withclock.server.ipv4.igmp enabled true
+par gptp_withclock.server.ipv4.igmp robustnessVariable 2
+par gptp_withclock.server.ipv4.igmp queryInterval 125s
+attr unit s
+par gptp_withclock.server.ipv4.igmp queryResponseInterval 10s
+attr unit s
+par gptp_withclock.server.ipv4.igmp groupMembershipInterval 260s
+attr unit s
+par gptp_withclock.server.ipv4.igmp otherQuerierPresentInterval 255s
+attr unit s
+par gptp_withclock.server.ipv4.igmp startupQueryInterval 31.25s
+attr unit s
+par gptp_withclock.server.ipv4.igmp startupQueryCount 2
+par gptp_withclock.server.ipv4.igmp lastMemberQueryInterval 1s
+attr unit s
+par gptp_withclock.server.ipv4.igmp lastMemberQueryCount 2
+par gptp_withclock.server.ipv4.igmp unsolicitedReportInterval 10s
+attr unit s
+par gptp_withclock.server.ipv4.icmp typename "\"inet.networklayer.ipv4.Icmp\""
+par gptp_withclock.server.ipv4.icmp interfaceTableModule "\"gptp_withclock.server.interfaceTable\""
+par gptp_withclock.server.ipv4.icmp routingTableModule "\"gptp_withclock.server.ipv4.routingTable\""
+par gptp_withclock.server.ipv4.icmp crcMode "\"declared\""
+attr enum declared,computed
+attr mutable ""
+par gptp_withclock.server.ipv4.icmp quoteLength 8B
+attr mutable ""
+attr unit B
+par gptp_withclock.server.ipv4.mp typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.server.ipv4.mp displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.ipv4.mp forwardServiceRegistration true
+par gptp_withclock.server.ipv4.mp forwardProtocolRegistration true
+par gptp_withclock.server.ipv4.ip typename "\"inet.networklayer.ipv4.Ipv4\""
+par gptp_withclock.server.ipv4.ip interfaceTableModule "\"gptp_withclock.server.interfaceTable\""
+par gptp_withclock.server.ipv4.ip routingTableModule "\"gptp_withclock.server.ipv4.routingTable\""
+par gptp_withclock.server.ipv4.ip arpModule "\"gptp_withclock.server.ipv4.arp\""
+par gptp_withclock.server.ipv4.ip icmpModule "\"gptp_withclock.server.ipv4.icmp\""
+par gptp_withclock.server.ipv4.ip crcMode "\"declared\""
+attr enum declared,computed
+par gptp_withclock.server.ipv4.ip timeToLive 32
+par gptp_withclock.server.ipv4.ip multicastTimeToLive 32
+par gptp_withclock.server.ipv4.ip fragmentTimeout 60s
+attr unit s
+par gptp_withclock.server.ipv4.ip limitedBroadcast false
+par gptp_withclock.server.ipv4.ip directBroadcastInterfaces "\"\""
+par gptp_withclock.server.ipv4.arp typename "\"inet.networklayer.arp.ipv4.GlobalArp\""
+par gptp_withclock.server.ipv4.arp interfaceTableModule "\"gptp_withclock.server.interfaceTable\""
+par gptp_withclock.server.ipv4.arp addressType "\"ipv4\""
+attr enum ipv4,ipv6,mac,moduleid,modulepath
+par gptp_withclock.server.ipv4.lp typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.server.ipv4.lp displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.ipv4.lp forwardServiceRegistration true
+par gptp_withclock.server.ipv4.lp forwardProtocolRegistration true
+par gptp_withclock.server.ipv4 typename "\"inet.networklayer.ipv4.Ipv4NetworkLayer\""
+par gptp_withclock.server.ipv4 forwarding false
+par gptp_withclock.server.ipv4 multicastForwarding false
+par gptp_withclock.server.ipv4 hasIpsec false
+par gptp_withclock.server.ipv4 interfaceTableModule "\"gptp_withclock.server.interfaceTable\""
+par gptp_withclock.server.ipv4 displayStringTextFormat "\"%i\""
+par gptp_withclock.server.nl typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.server.nl displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.nl forwardServiceRegistration true
+par gptp_withclock.server.nl forwardProtocolRegistration true
+par gptp_withclock.server.udp typename "\"inet.transportlayer.udp.Udp\""
+par gptp_withclock.server.udp interfaceTableModule "\"gptp_withclock.server.interfaceTable\""
+par gptp_withclock.server.udp icmpModule "\"^.ipv4.icmp\""
+par gptp_withclock.server.udp icmpv6Module "\"^.ipv6.icmpv6\""
+par gptp_withclock.server.udp crcMode "\"declared\""
+attr enum disabled,declared,computed
+par gptp_withclock.server.udp defaultMulticastLoop true
+par gptp_withclock.server.tcp typename "\"inet.transportlayer.tcp.Tcp\""
+par gptp_withclock.server.tcp crcMode "\"declared\""
+attr enum declared,computed
+par gptp_withclock.server.tcp advertisedWindow 7504
+par gptp_withclock.server.tcp delayedAcksEnabled false
+par gptp_withclock.server.tcp nagleEnabled true
+par gptp_withclock.server.tcp limitedTransmitEnabled false
+par gptp_withclock.server.tcp increasedIWEnabled false
+par gptp_withclock.server.tcp sackSupport false
+par gptp_withclock.server.tcp windowScalingSupport false
+par gptp_withclock.server.tcp windowScalingFactor -1
+par gptp_withclock.server.tcp timestampSupport false
+par gptp_withclock.server.tcp mss 536
+par gptp_withclock.server.tcp msl 120s
+attr unit s
+par gptp_withclock.server.tcp tcpAlgorithmClass "\"TcpReno\""
+attr enum TcpVegas,TcpWestwood,DcTcp,TcpNewReno,TcpReno,TcpTahoe,TcpNoCongestionControl
+par gptp_withclock.server.tcp dupthresh 3
+par gptp_withclock.server.tcp initialSsthresh 4294967295
+par gptp_withclock.server.tcp stopOperationExtraTime 0s
+attr unit s
+par gptp_withclock.server.tcp stopOperationTimeout 2s
+attr unit s
+par gptp_withclock.server.tcp ecnWillingness false
+par gptp_withclock.server.tcp dctcpGamma 0.0625
+par gptp_withclock.server.tn typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.server.tn displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.tn forwardServiceRegistration true
+par gptp_withclock.server.tn forwardProtocolRegistration true
+par gptp_withclock.server.at typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.server.at displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.server.at forwardServiceRegistration true
+par gptp_withclock.server.at forwardProtocolRegistration true
+par gptp_withclock.server typename "\"inet.node.tsn.TsnDevice\""
+par gptp_withclock.server hasStatus false
+par gptp_withclock.server osgModel "\"\""
+par gptp_withclock.server osgModelColor "\"\""
+par gptp_withclock.server canvasImage "\"\""
+par gptp_withclock.server canvasImageColor "\"\""
+par gptp_withclock.server recordPcap false
+par gptp_withclock.server numPcapRecorders 0
+par gptp_withclock.server numLoInterfaces 1
+par gptp_withclock.server numWlanInterfaces 0
+par gptp_withclock.server numEthInterfaces 0
+par gptp_withclock.server numPppInterfaces 0
+par gptp_withclock.server numTunInterfaces 0
+par gptp_withclock.server numVirtInterfaces 0
+par gptp_withclock.server fcsMode "\"declared\""
+attr enum declared,computed
+par gptp_withclock.server hasIpv4 true
+par gptp_withclock.server hasIpv6 false
+par gptp_withclock.server hasGn false
+par gptp_withclock.server forwarding false
+par gptp_withclock.server multicastForwarding false
+par gptp_withclock.server hasUdp true
+par gptp_withclock.server hasTcp true
+par gptp_withclock.server hasSctp false
+par gptp_withclock.server numApps 0
+par gptp_withclock.server hasTimeSynchronization false
+par gptp_withclock.server hasIngressTrafficFiltering false
+par gptp_withclock.server hasEgressTrafficFiltering false
+par gptp_withclock.server hasEgressTrafficShaping false
+par gptp_withclock.server hasStreamRedundancy false
+par gptp_withclock.server hasIncomingStreams false
+par gptp_withclock.server hasOutgoingStreams false
+par gptp_withclock.server hasFramePreemption false
+par gptp_withclock.server hasCutthroughSwitching false
+par gptp_withclock.tactile.ethg$i[0].channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.eth[0].phys$o.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par gptp_withclock.tactile.interfaceTable displayAddresses false
+par gptp_withclock.tactile.cb typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.tactile.cb displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.cb forwardServiceRegistration true
+par gptp_withclock.tactile.cb forwardProtocolRegistration true
+par gptp_withclock.tactile.bl typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.tactile.bl displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.bl forwardServiceRegistration true
+par gptp_withclock.tactile.bl forwardProtocolRegistration true
+par gptp_withclock.tactile.ethernet.fcsInserter.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.ethernet.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.ethernet.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.ethernet.macHeaderChecker.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.ethernet.macHeaderInserter typename "\"inet.linklayer.ethernet.modular.EthernetMacHeaderInserter\""
+par gptp_withclock.tactile.ethernet.macHeaderInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.ethernet.macHeaderInserter interfaceTableModule "\"gptp_withclock.tactile.interfaceTable\""
+par gptp_withclock.tactile.ethernet.paddingInserter typename "\"inet.protocolelement.common.PaddingInserter\""
+par gptp_withclock.tactile.ethernet.paddingInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.ethernet.paddingInserter minLength 480b
+attr unit b
+par gptp_withclock.tactile.ethernet.paddingInserter roundingLength 8b
+attr unit b
+par gptp_withclock.tactile.ethernet.paddingInserter insertionPosition "\"back\""
+attr enum front,back
+par gptp_withclock.tactile.ethernet.fcsInserter typename "\"inet.linklayer.ethernet.modular.EthernetFcsInserter\""
+par gptp_withclock.tactile.ethernet.fcsInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.ethernet.fcsInserter fcsMode "\"declared\""
+attr enum disabled,declared,computed
+par gptp_withclock.tactile.ethernet.macHeaderChecker typename "\"inet.linklayer.ethernet.modular.EthernetMacHeaderChecker\""
+par gptp_withclock.tactile.ethernet.macHeaderChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.tactile.ethernet.macHeaderChecker backpressure false
+par gptp_withclock.tactile.ethernet.macHeaderChecker interfaceTableModule "\"gptp_withclock.tactile.interfaceTable\""
+par gptp_withclock.tactile.ethernet.macHeaderChecker promiscuous false
+par gptp_withclock.tactile.ethernet.fcsChecker typename "\"inet.linklayer.ethernet.modular.EthernetFcsChecker\""
+par gptp_withclock.tactile.ethernet.fcsChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.tactile.ethernet.fcsChecker backpressure false
+par gptp_withclock.tactile.ethernet.fcsChecker popFcs true
+par gptp_withclock.tactile.ethernet.fcsChecker enabled true
+par gptp_withclock.tactile.ethernet typename "\"inet.linklayer.ethernet.modular.EthernetLayer\""
+par gptp_withclock.tactile.ethernet interfaceTableModule "\"gptp_withclock.tactile.interfaceTable\""
+par gptp_withclock.tactile.ethernet hasSocketSupport false
+par gptp_withclock.tactile.li typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.tactile.li displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.li forwardServiceRegistration true
+par gptp_withclock.tactile.li forwardProtocolRegistration true
+par gptp_withclock.tactile.lo[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.lo[0].lo.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.lo[0].lo typename "\"inet.linklayer.loopback.Loopback\""
+par gptp_withclock.tactile.lo[0].lo interfaceTableModule "\"gptp_withclock.tactile.interfaceTable\""
+par gptp_withclock.tactile.lo[0].lo mtu 4470B
+attr unit B
+par gptp_withclock.tactile.lo[0] typename "\"inet.linklayer.loopback.LoopbackInterface\""
+par gptp_withclock.tactile.lo[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par gptp_withclock.tactile.lo[0] recordPcap false
+par gptp_withclock.tactile.lo[0] numPcapRecorders 0
+par gptp_withclock.tactile.lo[0] interfaceTableModule "\"gptp_withclock.tactile.interfaceTable\""
+par gptp_withclock.tactile.eth[0].phyLayer.lowerLayerOut.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.eth[0].phys$i.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.eth[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.eth[0].macLayer.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.eth[0].macLayer.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.eth[0].macLayer.outboundEmitter.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.eth[0].macLayer.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.eth[0].macLayer.fcsChecker.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.eth[0].macLayer.queue typename "\"inet.queueing.queue.PacketQueue\""
+par gptp_withclock.tactile.eth[0].macLayer.queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par gptp_withclock.tactile.eth[0].macLayer.queue packetCapacity -1
+par gptp_withclock.tactile.eth[0].macLayer.queue dataCapacity -1b
+attr unit b
+par gptp_withclock.tactile.eth[0].macLayer.queue dropperClass "\"\""
+par gptp_withclock.tactile.eth[0].macLayer.queue comparatorClass "\"\""
+par gptp_withclock.tactile.eth[0].macLayer.queue bufferModule "\"\""
+par gptp_withclock.tactile.eth[0].macLayer.server typename "\"inet.queueing.server.InstantServer\""
+par gptp_withclock.tactile.eth[0].macLayer.server displayStringTextFormat "\"served %p pk (%l)\""
+par gptp_withclock.tactile.eth[0].macLayer.server serveSchedulingPriority 0
+par gptp_withclock.tactile.eth[0].macLayer.outboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.tactile.eth[0].macLayer.outboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.eth[0].macLayer.outboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.tactile.eth[0].macLayer.outboundEmitter direction "\"outbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.tactile.eth[0].macLayer.outboundEmitter signalName "\"packetSentToLower\""
+par gptp_withclock.tactile.eth[0].macLayer.fcsChecker typename "\"inet.linklayer.ethernet.modular.EthernetFcsChecker\""
+par gptp_withclock.tactile.eth[0].macLayer.fcsChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.tactile.eth[0].macLayer.fcsChecker backpressure false
+par gptp_withclock.tactile.eth[0].macLayer.fcsChecker popFcs false
+par gptp_withclock.tactile.eth[0].macLayer.fcsChecker enabled true
+par gptp_withclock.tactile.eth[0].macLayer.inboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.tactile.eth[0].macLayer.inboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.eth[0].macLayer.inboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.tactile.eth[0].macLayer.inboundEmitter direction "\"inbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.tactile.eth[0].macLayer.inboundEmitter signalName "\"packetReceivedFromLower\""
+par gptp_withclock.tactile.eth[0].macLayer typename "\"inet.linklayer.ethernet.modular.EthernetMacLayer\""
+par gptp_withclock.tactile.eth[0].macLayer bitrate 1e+09bps
+attr unit bps
+par gptp_withclock.tactile.eth[0].phyLayer.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.eth[0].phyLayer.transmitter.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.eth[0].phyLayer.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.eth[0].phyLayer.phyHeaderChecker.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.eth[0].phyLayer.phyHeaderInserter typename "\"inet.physicallayer.wired.ethernet.EthernetPhyHeaderInserter\""
+par gptp_withclock.tactile.eth[0].phyLayer.phyHeaderInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.eth[0].phyLayer.interFrameGapInserter typename "\"inet.protocolelement.common.InterpacketGapInserter\""
+par gptp_withclock.tactile.eth[0].phyLayer.interFrameGapInserter displayStringTextFormat "\"delayed %p pk (%l)\\nifg: %g\""
+par gptp_withclock.tactile.eth[0].phyLayer.interFrameGapInserter clockModule "\"\""
+par gptp_withclock.tactile.eth[0].phyLayer.interFrameGapInserter initialChannelBusy false
+par gptp_withclock.tactile.eth[0].phyLayer.interFrameGapInserter duration 96s/dropUnit(parent.bitrate)
+attr unit s
+par gptp_withclock.tactile.eth[0].phyLayer.outboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.tactile.eth[0].phyLayer.outboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.eth[0].phyLayer.outboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.tactile.eth[0].phyLayer.outboundEmitter direction "\"outbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.tactile.eth[0].phyLayer.outboundEmitter signalName "\"packetSentToLower\""
+par gptp_withclock.tactile.eth[0].phyLayer.transmitter typename "\"inet.protocolelement.transceiver.PacketTransmitter\""
+par gptp_withclock.tactile.eth[0].phyLayer.transmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.eth[0].phyLayer.transmitter clockModule "\"\""
+par gptp_withclock.tactile.eth[0].phyLayer.transmitter datarate this.bitrate
+attr unit bps
+par gptp_withclock.tactile.eth[0].phyLayer.transmitter timestamping false
+par gptp_withclock.tactile.eth[0].phyLayer.transmitter ts_offset 0
+par gptp_withclock.tactile.eth[0].phyLayer.transmitter ts_packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.tactile.eth[0].phyLayer.phyHeaderChecker typename "\"inet.physicallayer.wired.ethernet.EthernetPhyHeaderChecker\""
+par gptp_withclock.tactile.eth[0].phyLayer.phyHeaderChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.tactile.eth[0].phyLayer.phyHeaderChecker backpressure false
+par gptp_withclock.tactile.eth[0].phyLayer.inboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.tactile.eth[0].phyLayer.inboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.eth[0].phyLayer.inboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.tactile.eth[0].phyLayer.inboundEmitter direction "\"inbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.tactile.eth[0].phyLayer.inboundEmitter signalName "\"packetReceivedFromLower\""
+par gptp_withclock.tactile.eth[0].phyLayer.receiver typename "\"inet.protocolelement.transceiver.PacketReceiver\""
+par gptp_withclock.tactile.eth[0].phyLayer.receiver displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.eth[0].phyLayer.receiver datarate 1e+09bps
+attr unit bps
+par gptp_withclock.tactile.eth[0].phyLayer.receiver timestamping false
+par gptp_withclock.tactile.eth[0].phyLayer.receiver ts_offset 0
+par gptp_withclock.tactile.eth[0].phyLayer.receiver linerate 1e+09
+par gptp_withclock.tactile.eth[0].phyLayer.receiver ts_packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.tactile.eth[0].phyLayer typename "\"inet.physicallayer.wired.ethernet.EthernetPhyLayer\""
+par gptp_withclock.tactile.eth[0].phyLayer bitrate this.bitrate
+attr unit bps
+par gptp_withclock.tactile.eth[0] typename "\"inet.linklayer.ethernet.LayeredEthernetInterface\""
+par gptp_withclock.tactile.eth[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par gptp_withclock.tactile.eth[0] recordPcap false
+par gptp_withclock.tactile.eth[0] numPcapRecorders 0
+par gptp_withclock.tactile.eth[0] protocol "\"ethernetmac\""
+par gptp_withclock.tactile.eth[0] broadcast true
+par gptp_withclock.tactile.eth[0] multicast true
+par gptp_withclock.tactile.eth[0] address "\"0A-AA-00-00-00-05\""
+attr mutable ""
+par gptp_withclock.tactile.eth[0] bitrate 1e+09bps
+attr unit bps
+par gptp_withclock.tactile.eth[0] mtu 1500B
+attr unit B
+par gptp_withclock.tactile.eth[0] interfaceTableModule "\"gptp_withclock.tactile.interfaceTable\""
+par gptp_withclock.tactile.ipv4.transportIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.ipv4.up.out[0].channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.ipv4.lp.out[2].channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.ipv4.ifIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tactile.ipv4.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NodeConfigurator\""
+par gptp_withclock.tactile.ipv4.configurator interfaceTableModule "\"gptp_withclock.tactile.interfaceTable\""
+par gptp_withclock.tactile.ipv4.configurator routingTableModule "\"gptp_withclock.tactile.ipv4.routingTable\""
+par gptp_withclock.tactile.ipv4.configurator networkConfiguratorModule "\"configurator\""
+par gptp_withclock.tactile.ipv4.configurator configureRoutingTable true
+par gptp_withclock.tactile.ipv4.routingTable typename "\"inet.networklayer.ipv4.Ipv4RoutingTable\""
+par gptp_withclock.tactile.ipv4.routingTable interfaceTableModule "\"gptp_withclock.tactile.interfaceTable\""
+par gptp_withclock.tactile.ipv4.routingTable routerId "\"auto\""
+par gptp_withclock.tactile.ipv4.routingTable netmaskRoutes "\"*\""
+par gptp_withclock.tactile.ipv4.routingTable forwarding false
+par gptp_withclock.tactile.ipv4.routingTable multicastForwarding false
+par gptp_withclock.tactile.ipv4.routingTable useAdminDist false
+par gptp_withclock.tactile.ipv4.routingTable routingFile "\"\""
+par gptp_withclock.tactile.ipv4.natTable typename "\"inet.networklayer.ipv4.Ipv4NatTable\""
+par gptp_withclock.tactile.ipv4.natTable networkProtocolModule "\"^.ip\""
+par gptp_withclock.tactile.ipv4.natTable config "<config/> at content:1"
+par gptp_withclock.tactile.ipv4.up typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.tactile.ipv4.up displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.ipv4.up forwardServiceRegistration true
+par gptp_withclock.tactile.ipv4.up forwardProtocolRegistration true
+par gptp_withclock.tactile.ipv4.igmp typename "\"inet.networklayer.ipv4.Igmpv2\""
+par gptp_withclock.tactile.ipv4.igmp interfaceTableModule "\"gptp_withclock.tactile.interfaceTable\""
+par gptp_withclock.tactile.ipv4.igmp routingTableModule "\"gptp_withclock.tactile.ipv4.routingTable\""
+par gptp_withclock.tactile.ipv4.igmp crcMode "\"declared\""
+attr enum declared,computed
+par gptp_withclock.tactile.ipv4.igmp enabled true
+par gptp_withclock.tactile.ipv4.igmp robustnessVariable 2
+par gptp_withclock.tactile.ipv4.igmp queryInterval 125s
+attr unit s
+par gptp_withclock.tactile.ipv4.igmp queryResponseInterval 10s
+attr unit s
+par gptp_withclock.tactile.ipv4.igmp groupMembershipInterval 260s
+attr unit s
+par gptp_withclock.tactile.ipv4.igmp otherQuerierPresentInterval 255s
+attr unit s
+par gptp_withclock.tactile.ipv4.igmp startupQueryInterval 31.25s
+attr unit s
+par gptp_withclock.tactile.ipv4.igmp startupQueryCount 2
+par gptp_withclock.tactile.ipv4.igmp lastMemberQueryInterval 1s
+attr unit s
+par gptp_withclock.tactile.ipv4.igmp lastMemberQueryCount 2
+par gptp_withclock.tactile.ipv4.igmp unsolicitedReportInterval 10s
+attr unit s
+par gptp_withclock.tactile.ipv4.icmp typename "\"inet.networklayer.ipv4.Icmp\""
+par gptp_withclock.tactile.ipv4.icmp interfaceTableModule "\"gptp_withclock.tactile.interfaceTable\""
+par gptp_withclock.tactile.ipv4.icmp routingTableModule "\"gptp_withclock.tactile.ipv4.routingTable\""
+par gptp_withclock.tactile.ipv4.icmp crcMode "\"declared\""
+attr enum declared,computed
+attr mutable ""
+par gptp_withclock.tactile.ipv4.icmp quoteLength 8B
+attr mutable ""
+attr unit B
+par gptp_withclock.tactile.ipv4.mp typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.tactile.ipv4.mp displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.ipv4.mp forwardServiceRegistration true
+par gptp_withclock.tactile.ipv4.mp forwardProtocolRegistration true
+par gptp_withclock.tactile.ipv4.ip typename "\"inet.networklayer.ipv4.Ipv4\""
+par gptp_withclock.tactile.ipv4.ip interfaceTableModule "\"gptp_withclock.tactile.interfaceTable\""
+par gptp_withclock.tactile.ipv4.ip routingTableModule "\"gptp_withclock.tactile.ipv4.routingTable\""
+par gptp_withclock.tactile.ipv4.ip arpModule "\"gptp_withclock.tactile.ipv4.arp\""
+par gptp_withclock.tactile.ipv4.ip icmpModule "\"gptp_withclock.tactile.ipv4.icmp\""
+par gptp_withclock.tactile.ipv4.ip crcMode "\"declared\""
+attr enum declared,computed
+par gptp_withclock.tactile.ipv4.ip timeToLive 32
+par gptp_withclock.tactile.ipv4.ip multicastTimeToLive 32
+par gptp_withclock.tactile.ipv4.ip fragmentTimeout 60s
+attr unit s
+par gptp_withclock.tactile.ipv4.ip limitedBroadcast false
+par gptp_withclock.tactile.ipv4.ip directBroadcastInterfaces "\"\""
+par gptp_withclock.tactile.ipv4.arp typename "\"inet.networklayer.arp.ipv4.GlobalArp\""
+par gptp_withclock.tactile.ipv4.arp interfaceTableModule "\"gptp_withclock.tactile.interfaceTable\""
+par gptp_withclock.tactile.ipv4.arp addressType "\"ipv4\""
+attr enum ipv4,ipv6,mac,moduleid,modulepath
+par gptp_withclock.tactile.ipv4.lp typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.tactile.ipv4.lp displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.ipv4.lp forwardServiceRegistration true
+par gptp_withclock.tactile.ipv4.lp forwardProtocolRegistration true
+par gptp_withclock.tactile.ipv4 typename "\"inet.networklayer.ipv4.Ipv4NetworkLayer\""
+par gptp_withclock.tactile.ipv4 forwarding false
+par gptp_withclock.tactile.ipv4 multicastForwarding false
+par gptp_withclock.tactile.ipv4 hasIpsec false
+par gptp_withclock.tactile.ipv4 interfaceTableModule "\"gptp_withclock.tactile.interfaceTable\""
+par gptp_withclock.tactile.ipv4 displayStringTextFormat "\"%i\""
+par gptp_withclock.tactile.nl typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.tactile.nl displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.nl forwardServiceRegistration true
+par gptp_withclock.tactile.nl forwardProtocolRegistration true
+par gptp_withclock.tactile.udp typename "\"inet.transportlayer.udp.Udp\""
+par gptp_withclock.tactile.udp interfaceTableModule "\"gptp_withclock.tactile.interfaceTable\""
+par gptp_withclock.tactile.udp icmpModule "\"^.ipv4.icmp\""
+par gptp_withclock.tactile.udp icmpv6Module "\"^.ipv6.icmpv6\""
+par gptp_withclock.tactile.udp crcMode "\"declared\""
+attr enum disabled,declared,computed
+par gptp_withclock.tactile.udp defaultMulticastLoop true
+par gptp_withclock.tactile.tcp typename "\"inet.transportlayer.tcp.Tcp\""
+par gptp_withclock.tactile.tcp crcMode "\"declared\""
+attr enum declared,computed
+par gptp_withclock.tactile.tcp advertisedWindow 7504
+par gptp_withclock.tactile.tcp delayedAcksEnabled false
+par gptp_withclock.tactile.tcp nagleEnabled true
+par gptp_withclock.tactile.tcp limitedTransmitEnabled false
+par gptp_withclock.tactile.tcp increasedIWEnabled false
+par gptp_withclock.tactile.tcp sackSupport false
+par gptp_withclock.tactile.tcp windowScalingSupport false
+par gptp_withclock.tactile.tcp windowScalingFactor -1
+par gptp_withclock.tactile.tcp timestampSupport false
+par gptp_withclock.tactile.tcp mss 536
+par gptp_withclock.tactile.tcp msl 120s
+attr unit s
+par gptp_withclock.tactile.tcp tcpAlgorithmClass "\"TcpReno\""
+attr enum TcpVegas,TcpWestwood,DcTcp,TcpNewReno,TcpReno,TcpTahoe,TcpNoCongestionControl
+par gptp_withclock.tactile.tcp dupthresh 3
+par gptp_withclock.tactile.tcp initialSsthresh 4294967295
+par gptp_withclock.tactile.tcp stopOperationExtraTime 0s
+attr unit s
+par gptp_withclock.tactile.tcp stopOperationTimeout 2s
+attr unit s
+par gptp_withclock.tactile.tcp ecnWillingness false
+par gptp_withclock.tactile.tcp dctcpGamma 0.0625
+par gptp_withclock.tactile.tn typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.tactile.tn displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.tn forwardServiceRegistration true
+par gptp_withclock.tactile.tn forwardProtocolRegistration true
+par gptp_withclock.tactile.at typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.tactile.at displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tactile.at forwardServiceRegistration true
+par gptp_withclock.tactile.at forwardProtocolRegistration true
+par gptp_withclock.tactile typename "\"inet.node.tsn.TsnDevice\""
+par gptp_withclock.tactile hasStatus false
+par gptp_withclock.tactile osgModel "\"\""
+par gptp_withclock.tactile osgModelColor "\"\""
+par gptp_withclock.tactile canvasImage "\"\""
+par gptp_withclock.tactile canvasImageColor "\"\""
+par gptp_withclock.tactile recordPcap false
+par gptp_withclock.tactile numPcapRecorders 0
+par gptp_withclock.tactile numLoInterfaces 1
+par gptp_withclock.tactile numWlanInterfaces 0
+par gptp_withclock.tactile numEthInterfaces 0
+par gptp_withclock.tactile numPppInterfaces 0
+par gptp_withclock.tactile numTunInterfaces 0
+par gptp_withclock.tactile numVirtInterfaces 0
+par gptp_withclock.tactile fcsMode "\"declared\""
+attr enum declared,computed
+par gptp_withclock.tactile hasIpv4 true
+par gptp_withclock.tactile hasIpv6 false
+par gptp_withclock.tactile hasGn false
+par gptp_withclock.tactile forwarding false
+par gptp_withclock.tactile multicastForwarding false
+par gptp_withclock.tactile hasUdp true
+par gptp_withclock.tactile hasTcp true
+par gptp_withclock.tactile hasSctp false
+par gptp_withclock.tactile numApps 0
+par gptp_withclock.tactile hasTimeSynchronization false
+par gptp_withclock.tactile hasIngressTrafficFiltering false
+par gptp_withclock.tactile hasEgressTrafficFiltering false
+par gptp_withclock.tactile hasEgressTrafficShaping false
+par gptp_withclock.tactile hasStreamRedundancy false
+par gptp_withclock.tactile hasIncomingStreams false
+par gptp_withclock.tactile hasOutgoingStreams false
+par gptp_withclock.tactile hasFramePreemption false
+par gptp_withclock.tactile hasCutthroughSwitching false
+par gptp_withclock.tsnClock.ethg$i[0].channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.eth[0].phys$o.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.clock typename "\"inet.clock.model.IdealClock\""
+par gptp_withclock.tsnClock.clock displayStringTextFormat "\"time: %T\""
+par gptp_withclock.tsnClock.clock referenceClock "\"tsnClock.clock\""
+par gptp_withclock.tsnClock.clock emitClockTimeInterval 0s
+attr unit s
+par gptp_withclock.tsnClock.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par gptp_withclock.tsnClock.interfaceTable displayAddresses false
+par gptp_withclock.tsnClock.cb typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.tsnClock.cb displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.cb forwardServiceRegistration true
+par gptp_withclock.tsnClock.cb forwardProtocolRegistration true
+par gptp_withclock.tsnClock.bl typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.tsnClock.bl displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.bl forwardServiceRegistration true
+par gptp_withclock.tsnClock.bl forwardProtocolRegistration true
+par gptp_withclock.tsnClock.ethernet.fcsInserter.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.ethernet.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.ethernet.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.ethernet.macHeaderChecker.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.ethernet.macHeaderInserter typename "\"inet.linklayer.ethernet.modular.EthernetMacHeaderInserter\""
+par gptp_withclock.tsnClock.ethernet.macHeaderInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.ethernet.macHeaderInserter interfaceTableModule "\"gptp_withclock.tsnClock.interfaceTable\""
+par gptp_withclock.tsnClock.ethernet.paddingInserter typename "\"inet.protocolelement.common.PaddingInserter\""
+par gptp_withclock.tsnClock.ethernet.paddingInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.ethernet.paddingInserter minLength 480b
+attr unit b
+par gptp_withclock.tsnClock.ethernet.paddingInserter roundingLength 8b
+attr unit b
+par gptp_withclock.tsnClock.ethernet.paddingInserter insertionPosition "\"back\""
+attr enum front,back
+par gptp_withclock.tsnClock.ethernet.fcsInserter typename "\"inet.linklayer.ethernet.modular.EthernetFcsInserter\""
+par gptp_withclock.tsnClock.ethernet.fcsInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.ethernet.fcsInserter fcsMode "\"declared\""
+attr enum disabled,declared,computed
+par gptp_withclock.tsnClock.ethernet.macHeaderChecker typename "\"inet.linklayer.ethernet.modular.EthernetMacHeaderChecker\""
+par gptp_withclock.tsnClock.ethernet.macHeaderChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.tsnClock.ethernet.macHeaderChecker backpressure false
+par gptp_withclock.tsnClock.ethernet.macHeaderChecker interfaceTableModule "\"gptp_withclock.tsnClock.interfaceTable\""
+par gptp_withclock.tsnClock.ethernet.macHeaderChecker promiscuous false
+par gptp_withclock.tsnClock.ethernet.fcsChecker typename "\"inet.linklayer.ethernet.modular.EthernetFcsChecker\""
+par gptp_withclock.tsnClock.ethernet.fcsChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.tsnClock.ethernet.fcsChecker backpressure false
+par gptp_withclock.tsnClock.ethernet.fcsChecker popFcs true
+par gptp_withclock.tsnClock.ethernet.fcsChecker enabled true
+par gptp_withclock.tsnClock.ethernet typename "\"inet.linklayer.ethernet.modular.EthernetLayer\""
+par gptp_withclock.tsnClock.ethernet interfaceTableModule "\"gptp_withclock.tsnClock.interfaceTable\""
+par gptp_withclock.tsnClock.ethernet hasSocketSupport false
+par gptp_withclock.tsnClock.li typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.tsnClock.li displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.li forwardServiceRegistration true
+par gptp_withclock.tsnClock.li forwardProtocolRegistration true
+par gptp_withclock.tsnClock.lo[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.lo[0].lo.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.lo[0].lo typename "\"inet.linklayer.loopback.Loopback\""
+par gptp_withclock.tsnClock.lo[0].lo interfaceTableModule "\"gptp_withclock.tsnClock.interfaceTable\""
+par gptp_withclock.tsnClock.lo[0].lo mtu 4470B
+attr unit B
+par gptp_withclock.tsnClock.lo[0] typename "\"inet.linklayer.loopback.LoopbackInterface\""
+par gptp_withclock.tsnClock.lo[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par gptp_withclock.tsnClock.lo[0] recordPcap false
+par gptp_withclock.tsnClock.lo[0] numPcapRecorders 0
+par gptp_withclock.tsnClock.lo[0] interfaceTableModule "\"gptp_withclock.tsnClock.interfaceTable\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.lowerLayerOut.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.eth[0].phys$i.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.eth[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.eth[0].macLayer.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.eth[0].macLayer.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.eth[0].macLayer.outboundEmitter.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.eth[0].macLayer.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.eth[0].macLayer.fcsChecker.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.eth[0].macLayer.queue typename "\"inet.queueing.queue.PacketQueue\""
+par gptp_withclock.tsnClock.eth[0].macLayer.queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par gptp_withclock.tsnClock.eth[0].macLayer.queue packetCapacity -1
+par gptp_withclock.tsnClock.eth[0].macLayer.queue dataCapacity -1b
+attr unit b
+par gptp_withclock.tsnClock.eth[0].macLayer.queue dropperClass "\"\""
+par gptp_withclock.tsnClock.eth[0].macLayer.queue comparatorClass "\"\""
+par gptp_withclock.tsnClock.eth[0].macLayer.queue bufferModule "\"\""
+par gptp_withclock.tsnClock.eth[0].macLayer.server typename "\"inet.queueing.server.InstantServer\""
+par gptp_withclock.tsnClock.eth[0].macLayer.server displayStringTextFormat "\"served %p pk (%l)\""
+par gptp_withclock.tsnClock.eth[0].macLayer.server serveSchedulingPriority 0
+par gptp_withclock.tsnClock.eth[0].macLayer.outboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.tsnClock.eth[0].macLayer.outboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.eth[0].macLayer.outboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.tsnClock.eth[0].macLayer.outboundEmitter direction "\"outbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.tsnClock.eth[0].macLayer.outboundEmitter signalName "\"packetSentToLower\""
+par gptp_withclock.tsnClock.eth[0].macLayer.fcsChecker typename "\"inet.linklayer.ethernet.modular.EthernetFcsChecker\""
+par gptp_withclock.tsnClock.eth[0].macLayer.fcsChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.tsnClock.eth[0].macLayer.fcsChecker backpressure false
+par gptp_withclock.tsnClock.eth[0].macLayer.fcsChecker popFcs false
+par gptp_withclock.tsnClock.eth[0].macLayer.fcsChecker enabled true
+par gptp_withclock.tsnClock.eth[0].macLayer.inboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.tsnClock.eth[0].macLayer.inboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.eth[0].macLayer.inboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.tsnClock.eth[0].macLayer.inboundEmitter direction "\"inbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.tsnClock.eth[0].macLayer.inboundEmitter signalName "\"packetReceivedFromLower\""
+par gptp_withclock.tsnClock.eth[0].macLayer typename "\"inet.linklayer.ethernet.modular.EthernetMacLayer\""
+par gptp_withclock.tsnClock.eth[0].macLayer bitrate 1e+09bps
+attr unit bps
+par gptp_withclock.tsnClock.eth[0].phyLayer.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.transmitter.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.phyHeaderChecker.out.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.phyHeaderInserter typename "\"inet.physicallayer.wired.ethernet.EthernetPhyHeaderInserter\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.phyHeaderInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.interFrameGapInserter typename "\"inet.protocolelement.common.InterpacketGapInserter\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.interFrameGapInserter displayStringTextFormat "\"delayed %p pk (%l)\\nifg: %g\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.interFrameGapInserter clockModule "\"\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.interFrameGapInserter initialChannelBusy false
+par gptp_withclock.tsnClock.eth[0].phyLayer.interFrameGapInserter duration 96s/dropUnit(parent.bitrate)
+attr unit s
+par gptp_withclock.tsnClock.eth[0].phyLayer.outboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.outboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.outboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.outboundEmitter direction "\"outbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.tsnClock.eth[0].phyLayer.outboundEmitter signalName "\"packetSentToLower\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.transmitter typename "\"inet.protocolelement.transceiver.PacketTransmitter\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.transmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.transmitter clockModule "\"\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.transmitter datarate this.bitrate
+attr unit bps
+par gptp_withclock.tsnClock.eth[0].phyLayer.transmitter timestamping false
+par gptp_withclock.tsnClock.eth[0].phyLayer.transmitter ts_offset 0
+par gptp_withclock.tsnClock.eth[0].phyLayer.transmitter ts_packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.phyHeaderChecker typename "\"inet.physicallayer.wired.ethernet.EthernetPhyHeaderChecker\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.phyHeaderChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.phyHeaderChecker backpressure false
+par gptp_withclock.tsnClock.eth[0].phyLayer.inboundEmitter typename "\"inet.protocolelement.common.PacketEmitter\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.inboundEmitter displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.inboundEmitter packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.inboundEmitter direction "\"inbound\""
+attr enum undefined,inbound,outbound
+par gptp_withclock.tsnClock.eth[0].phyLayer.inboundEmitter signalName "\"packetReceivedFromLower\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.receiver typename "\"inet.protocolelement.transceiver.PacketReceiver\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.receiver displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.eth[0].phyLayer.receiver datarate 1e+09bps
+attr unit bps
+par gptp_withclock.tsnClock.eth[0].phyLayer.receiver timestamping false
+par gptp_withclock.tsnClock.eth[0].phyLayer.receiver ts_offset 0
+par gptp_withclock.tsnClock.eth[0].phyLayer.receiver linerate 1e+09
+par gptp_withclock.tsnClock.eth[0].phyLayer.receiver ts_packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+par gptp_withclock.tsnClock.eth[0].phyLayer typename "\"inet.physicallayer.wired.ethernet.EthernetPhyLayer\""
+par gptp_withclock.tsnClock.eth[0].phyLayer bitrate this.bitrate
+attr unit bps
+par gptp_withclock.tsnClock.eth[0] typename "\"inet.linklayer.ethernet.LayeredEthernetInterface\""
+par gptp_withclock.tsnClock.eth[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par gptp_withclock.tsnClock.eth[0] recordPcap false
+par gptp_withclock.tsnClock.eth[0] numPcapRecorders 0
+par gptp_withclock.tsnClock.eth[0] protocol "\"ethernetmac\""
+par gptp_withclock.tsnClock.eth[0] broadcast true
+par gptp_withclock.tsnClock.eth[0] multicast true
+par gptp_withclock.tsnClock.eth[0] address "\"0A-AA-00-00-00-06\""
+attr mutable ""
+par gptp_withclock.tsnClock.eth[0] bitrate 1e+09bps
+attr unit bps
+par gptp_withclock.tsnClock.eth[0] mtu 1500B
+attr unit B
+par gptp_withclock.tsnClock.eth[0] interfaceTableModule "\"gptp_withclock.tsnClock.interfaceTable\""
+par gptp_withclock.tsnClock.ipv4.transportIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.ipv4.up.out[0].channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.ipv4.lp.out[2].channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.ipv4.ifIn.channel typename "\"ned.IdealChannel\""
+par gptp_withclock.tsnClock.ipv4.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NodeConfigurator\""
+par gptp_withclock.tsnClock.ipv4.configurator interfaceTableModule "\"gptp_withclock.tsnClock.interfaceTable\""
+par gptp_withclock.tsnClock.ipv4.configurator routingTableModule "\"gptp_withclock.tsnClock.ipv4.routingTable\""
+par gptp_withclock.tsnClock.ipv4.configurator networkConfiguratorModule "\"configurator\""
+par gptp_withclock.tsnClock.ipv4.configurator configureRoutingTable true
+par gptp_withclock.tsnClock.ipv4.routingTable typename "\"inet.networklayer.ipv4.Ipv4RoutingTable\""
+par gptp_withclock.tsnClock.ipv4.routingTable interfaceTableModule "\"gptp_withclock.tsnClock.interfaceTable\""
+par gptp_withclock.tsnClock.ipv4.routingTable routerId "\"auto\""
+par gptp_withclock.tsnClock.ipv4.routingTable netmaskRoutes "\"*\""
+par gptp_withclock.tsnClock.ipv4.routingTable forwarding false
+par gptp_withclock.tsnClock.ipv4.routingTable multicastForwarding false
+par gptp_withclock.tsnClock.ipv4.routingTable useAdminDist false
+par gptp_withclock.tsnClock.ipv4.routingTable routingFile "\"\""
+par gptp_withclock.tsnClock.ipv4.natTable typename "\"inet.networklayer.ipv4.Ipv4NatTable\""
+par gptp_withclock.tsnClock.ipv4.natTable networkProtocolModule "\"^.ip\""
+par gptp_withclock.tsnClock.ipv4.natTable config "<config/> at content:1"
+par gptp_withclock.tsnClock.ipv4.up typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.tsnClock.ipv4.up displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.ipv4.up forwardServiceRegistration true
+par gptp_withclock.tsnClock.ipv4.up forwardProtocolRegistration true
+par gptp_withclock.tsnClock.ipv4.igmp typename "\"inet.networklayer.ipv4.Igmpv2\""
+par gptp_withclock.tsnClock.ipv4.igmp interfaceTableModule "\"gptp_withclock.tsnClock.interfaceTable\""
+par gptp_withclock.tsnClock.ipv4.igmp routingTableModule "\"gptp_withclock.tsnClock.ipv4.routingTable\""
+par gptp_withclock.tsnClock.ipv4.igmp crcMode "\"declared\""
+attr enum declared,computed
+par gptp_withclock.tsnClock.ipv4.igmp enabled true
+par gptp_withclock.tsnClock.ipv4.igmp robustnessVariable 2
+par gptp_withclock.tsnClock.ipv4.igmp queryInterval 125s
+attr unit s
+par gptp_withclock.tsnClock.ipv4.igmp queryResponseInterval 10s
+attr unit s
+par gptp_withclock.tsnClock.ipv4.igmp groupMembershipInterval 260s
+attr unit s
+par gptp_withclock.tsnClock.ipv4.igmp otherQuerierPresentInterval 255s
+attr unit s
+par gptp_withclock.tsnClock.ipv4.igmp startupQueryInterval 31.25s
+attr unit s
+par gptp_withclock.tsnClock.ipv4.igmp startupQueryCount 2
+par gptp_withclock.tsnClock.ipv4.igmp lastMemberQueryInterval 1s
+attr unit s
+par gptp_withclock.tsnClock.ipv4.igmp lastMemberQueryCount 2
+par gptp_withclock.tsnClock.ipv4.igmp unsolicitedReportInterval 10s
+attr unit s
+par gptp_withclock.tsnClock.ipv4.icmp typename "\"inet.networklayer.ipv4.Icmp\""
+par gptp_withclock.tsnClock.ipv4.icmp interfaceTableModule "\"gptp_withclock.tsnClock.interfaceTable\""
+par gptp_withclock.tsnClock.ipv4.icmp routingTableModule "\"gptp_withclock.tsnClock.ipv4.routingTable\""
+par gptp_withclock.tsnClock.ipv4.icmp crcMode "\"declared\""
+attr enum declared,computed
+attr mutable ""
+par gptp_withclock.tsnClock.ipv4.icmp quoteLength 8B
+attr mutable ""
+attr unit B
+par gptp_withclock.tsnClock.ipv4.mp typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.tsnClock.ipv4.mp displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.ipv4.mp forwardServiceRegistration true
+par gptp_withclock.tsnClock.ipv4.mp forwardProtocolRegistration true
+par gptp_withclock.tsnClock.ipv4.ip typename "\"inet.networklayer.ipv4.Ipv4\""
+par gptp_withclock.tsnClock.ipv4.ip interfaceTableModule "\"gptp_withclock.tsnClock.interfaceTable\""
+par gptp_withclock.tsnClock.ipv4.ip routingTableModule "\"gptp_withclock.tsnClock.ipv4.routingTable\""
+par gptp_withclock.tsnClock.ipv4.ip arpModule "\"gptp_withclock.tsnClock.ipv4.arp\""
+par gptp_withclock.tsnClock.ipv4.ip icmpModule "\"gptp_withclock.tsnClock.ipv4.icmp\""
+par gptp_withclock.tsnClock.ipv4.ip crcMode "\"declared\""
+attr enum declared,computed
+par gptp_withclock.tsnClock.ipv4.ip timeToLive 32
+par gptp_withclock.tsnClock.ipv4.ip multicastTimeToLive 32
+par gptp_withclock.tsnClock.ipv4.ip fragmentTimeout 60s
+attr unit s
+par gptp_withclock.tsnClock.ipv4.ip limitedBroadcast false
+par gptp_withclock.tsnClock.ipv4.ip directBroadcastInterfaces "\"\""
+par gptp_withclock.tsnClock.ipv4.arp typename "\"inet.networklayer.arp.ipv4.GlobalArp\""
+par gptp_withclock.tsnClock.ipv4.arp interfaceTableModule "\"gptp_withclock.tsnClock.interfaceTable\""
+par gptp_withclock.tsnClock.ipv4.arp addressType "\"ipv4\""
+attr enum ipv4,ipv6,mac,moduleid,modulepath
+par gptp_withclock.tsnClock.ipv4.lp typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.tsnClock.ipv4.lp displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.ipv4.lp forwardServiceRegistration true
+par gptp_withclock.tsnClock.ipv4.lp forwardProtocolRegistration true
+par gptp_withclock.tsnClock.ipv4 typename "\"inet.networklayer.ipv4.Ipv4NetworkLayer\""
+par gptp_withclock.tsnClock.ipv4 forwarding false
+par gptp_withclock.tsnClock.ipv4 multicastForwarding false
+par gptp_withclock.tsnClock.ipv4 hasIpsec false
+par gptp_withclock.tsnClock.ipv4 interfaceTableModule "\"gptp_withclock.tsnClock.interfaceTable\""
+par gptp_withclock.tsnClock.ipv4 displayStringTextFormat "\"%i\""
+par gptp_withclock.tsnClock.nl typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.tsnClock.nl displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.nl forwardServiceRegistration true
+par gptp_withclock.tsnClock.nl forwardProtocolRegistration true
+par gptp_withclock.tsnClock.udp typename "\"inet.transportlayer.udp.Udp\""
+par gptp_withclock.tsnClock.udp interfaceTableModule "\"gptp_withclock.tsnClock.interfaceTable\""
+par gptp_withclock.tsnClock.udp icmpModule "\"^.ipv4.icmp\""
+par gptp_withclock.tsnClock.udp icmpv6Module "\"^.ipv6.icmpv6\""
+par gptp_withclock.tsnClock.udp crcMode "\"declared\""
+attr enum disabled,declared,computed
+par gptp_withclock.tsnClock.udp defaultMulticastLoop true
+par gptp_withclock.tsnClock.tcp typename "\"inet.transportlayer.tcp.Tcp\""
+par gptp_withclock.tsnClock.tcp crcMode "\"declared\""
+attr enum declared,computed
+par gptp_withclock.tsnClock.tcp advertisedWindow 7504
+par gptp_withclock.tsnClock.tcp delayedAcksEnabled false
+par gptp_withclock.tsnClock.tcp nagleEnabled true
+par gptp_withclock.tsnClock.tcp limitedTransmitEnabled false
+par gptp_withclock.tsnClock.tcp increasedIWEnabled false
+par gptp_withclock.tsnClock.tcp sackSupport false
+par gptp_withclock.tsnClock.tcp windowScalingSupport false
+par gptp_withclock.tsnClock.tcp windowScalingFactor -1
+par gptp_withclock.tsnClock.tcp timestampSupport false
+par gptp_withclock.tsnClock.tcp mss 536
+par gptp_withclock.tsnClock.tcp msl 120s
+attr unit s
+par gptp_withclock.tsnClock.tcp tcpAlgorithmClass "\"TcpReno\""
+attr enum TcpVegas,TcpWestwood,DcTcp,TcpNewReno,TcpReno,TcpTahoe,TcpNoCongestionControl
+par gptp_withclock.tsnClock.tcp dupthresh 3
+par gptp_withclock.tsnClock.tcp initialSsthresh 4294967295
+par gptp_withclock.tsnClock.tcp stopOperationExtraTime 0s
+attr unit s
+par gptp_withclock.tsnClock.tcp stopOperationTimeout 2s
+attr unit s
+par gptp_withclock.tsnClock.tcp ecnWillingness false
+par gptp_withclock.tsnClock.tcp dctcpGamma 0.0625
+par gptp_withclock.tsnClock.tn typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.tsnClock.tn displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.tn forwardServiceRegistration true
+par gptp_withclock.tsnClock.tn forwardProtocolRegistration true
+par gptp_withclock.tsnClock.at typename "\"inet.common.MessageDispatcher\""
+par gptp_withclock.tsnClock.at displayStringTextFormat "\"processed %p pk (%l)\""
+par gptp_withclock.tsnClock.at forwardServiceRegistration true
+par gptp_withclock.tsnClock.at forwardProtocolRegistration true
+par gptp_withclock.tsnClock.gptp typename "\"inet.linklayer.ieee8021as.Gptp\""
+par gptp_withclock.tsnClock.gptp clockModule "\"gptp_withclock.tsnClock.clock\""
+par gptp_withclock.tsnClock.gptp interfaceTableModule "\"gptp_withclock.tsnClock.interfaceTable\""
+par gptp_withclock.tsnClock.gptp gptpNodeType "\"MASTER_NODE\""
+par gptp_withclock.tsnClock.gptp domainNumber 0
+par gptp_withclock.tsnClock.gptp slavePort "\"\""
+par gptp_withclock.tsnClock.gptp masterPorts "[\"eth0\"]"
+par gptp_withclock.tsnClock.gptp correctionField 0s
+attr unit s
+par gptp_withclock.tsnClock.gptp syncInterval 0.125s
+attr unit s
+par gptp_withclock.tsnClock.gptp pdelayInterval 1s
+attr unit s
+par gptp_withclock.tsnClock.gptp syncInitialOffset 0.125s
+attr unit s
+par gptp_withclock.tsnClock.gptp pdelayInitialOffset 0s
+attr unit s
+par gptp_withclock.tsnClock.gptp clockResetThreshold 1e-07s
+attr unit s
+par gptp_withclock.tsnClock.gptp gamma 1
+par gptp_withclock.tsnClock.gptp delta 1
+par gptp_withclock.tsnClock.gptp pDelayReqProcessingTime 8e-06s
+attr unit s
+par gptp_withclock.tsnClock.gptp followUpInterval 7e-06s
+attr unit s
+par gptp_withclock.tsnClock.gptp synchronizationClockTimeError 0s
+attr unit s
+par gptp_withclock.tsnClock.gptp synchronizationOscillatorCompensationError 0ppm
+attr unit ppm
+par gptp_withclock.tsnClock typename "\"inet.node.tsn.TsnClock\""
+par gptp_withclock.tsnClock hasStatus false
+par gptp_withclock.tsnClock osgModel "\"\""
+par gptp_withclock.tsnClock osgModelColor "\"\""
+par gptp_withclock.tsnClock canvasImage "\"\""
+par gptp_withclock.tsnClock canvasImageColor "\"\""
+par gptp_withclock.tsnClock recordPcap false
+par gptp_withclock.tsnClock numPcapRecorders 0
+par gptp_withclock.tsnClock numLoInterfaces 1
+par gptp_withclock.tsnClock numWlanInterfaces 0
+par gptp_withclock.tsnClock numEthInterfaces 0
+par gptp_withclock.tsnClock numPppInterfaces 0
+par gptp_withclock.tsnClock numTunInterfaces 0
+par gptp_withclock.tsnClock numVirtInterfaces 0
+par gptp_withclock.tsnClock fcsMode "\"declared\""
+attr enum declared,computed
+par gptp_withclock.tsnClock hasIpv4 true
+par gptp_withclock.tsnClock hasIpv6 false
+par gptp_withclock.tsnClock hasGn false
+par gptp_withclock.tsnClock forwarding false
+par gptp_withclock.tsnClock multicastForwarding false
+par gptp_withclock.tsnClock hasUdp true
+par gptp_withclock.tsnClock hasTcp true
+par gptp_withclock.tsnClock hasSctp false
+par gptp_withclock.tsnClock numApps 0
+par gptp_withclock.tsnClock hasCutthroughSwitching false
+par gptp_withclock typename "\"validation_paper.simulations.gptp_withclock\""
+par gptp_withclock recordPcap false
+par gptp_withclock numPcapRecorders 0
+par gptp_withclock hasGlobalArp true
+
