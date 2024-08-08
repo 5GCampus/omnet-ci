@@ -23,6 +23,7 @@
   - src/inet/queueing/common/PacketDelayer.cc
 - For gPTP test
   - src/inet/linklayer/ieee8021as/Gptp.cc
+- The changes.patch file shows the difference between the original INET repo branch v4.4.x.
 ## TO configure modified INET in the .ini file
 - SF mode: ```*.switch1*.eth[4].processingDelayLayer.egress.delay = [SET THE DELAY VALUES]```
 - CT mode:
