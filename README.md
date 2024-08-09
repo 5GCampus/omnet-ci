@@ -30,6 +30,10 @@
   - ```*.switch2*.eth[1].processingDelayLayer.egress.interbuff_alpha = [ALPHA VALUE]```
   - ```*.switch2*.eth[1].processingDelayLayer.egress.interbuff_beta = [BETA VALUE]```
   - ```*.switch2*.eth[1].processingDelayLayer.egress.threshold_pktsize = [PKT THRESHOLD]```
+- gPTP New Introduced parameters.
+  - ```*.switch1*.gptp.clockResetThreshold = 10ns```
+  - ```*.switch1*.gptp.delta = 0.7 # related to the previous oscillator compensation```
+  - ```*.switch1*.gptp.gamma = 1.0 # realted to the nr-1```
 
 ## HW measurement
 - Please see our [TSN-FlexTest](https://github.com/5GCampus/tsn-testbed)
