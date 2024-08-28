@@ -1,12 +1,13 @@
-# omnet-ci
+# Improving TSN Simulation Accuracy in OMNeT++: A Hardware-Aligned Approach
 
 ## Paper 
-- please see the paper for details: [Improving TSN Simulation Accuracy in OMNeT++: A Hardware-Aligned Approach](https://ieeexplore.ieee.org/abstract/document/10549887)
+- Please see the paper for details: [Improving TSN Simulation Accuracy in OMNeT++: A Hardware-Aligned Approach](https://ieeexplore.ieee.org/abstract/document/10549887),
+- And, please cite this paper as a reference when using our modified INET.
 ```
   @ARTICLE{10549887,
   author={Liu, How-Hang and Senk, Stefan and Ulbricht, Marian and Nazari, Hosein K. and Scheinert, Tobias and Reisslein, Martin and Nguyen, Giang T. and Fitzek, Frank H. P.},
   journal={IEEE Access}, 
-  title={Improving TSN Simulation Accuracy in OMNeT++: A Hardware-Aligned Approach}, 
+  title={Improving {TSN} Simulation Accuracy in {OMNeT++}: A Hardware-Aligned Approach}, 
   year={2024},
   volume={12},
   number={},
