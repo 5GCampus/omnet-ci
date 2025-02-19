@@ -1,0 +1,3 @@
+[submodule "inet_access"]
+	path = inet_access
+	url = https://github.com/TUDComnetsTSN/inet4.4_Access.git
