@@ -39,3 +39,6 @@
 
 ## HW measurement
 - Please see our [TSN-FlexTest](https://github.com/5GCampus/tsn-testbed)
+
+## Acknowledgement
+-  Funded in part by the German Federal Ministry for Economic Affairs and Climate Action (BMWK) projects “TICCTEC” – grant 01MC22007A
